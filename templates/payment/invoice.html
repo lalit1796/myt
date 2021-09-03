@@ -1,0 +1,319 @@
+{% load static %}
+<style>
+#_invoice_ {
+    display: block;
+    line-height: 1.2;
+    font-family: sans-serif;
+    color: #363636;
+    background: white;
+    max-width: 900px;
+    margin: 20px auto;
+	font-size: 14px;
+	padding: 10px;
+	border: solid 1px #d6d6d6;
+}
+.trans-- {
+    margin: 20px 0 10px 0;
+    font-size: 130%;
+}
+.inv-tab {
+    display: table;
+    width: 100%;
+}
+.inv-r {
+    display: table-row;
+}
+.inv-c {
+    display: table-cell;
+	width: 33%;
+}
+.incom {
+    border: solid 1px #d2d2d2;
+    padding: 10px;
+    margin: 10px 0;
+}
+.inpv {
+    font-weight: bold;
+    font-size: 150%;
+    line-height: 2;
+}
+.inpl {
+    font-weight: bold;
+    color: grey;
+}
+._duphead {
+    padding: 10px;
+    font-weight: bold;
+    margin: 8px 0;
+    color: #a3a5a3;
+    background: #f2f9fd;
+}
+.inv-cr {
+    line-height: 1.6;
+}
+.inv-cent {
+    text-align: center;
+}
+.inv-t {
+    background: #e5e5e5;
+    margin: 10px 0;
+}
+.inv-col {
+    display: table-cell;
+}
+
+</style>
+
+<div id="_invoice_" class="invoice invoice-v1" data-version=1>
+
+	<div class="inv-tab">
+		<div class="inv-r">
+			<div class="inv-c">
+				<div class="_logo">
+					myTrip
+				</div>
+			</div>
+			<div class="inv-c"></div>
+			<div class="inv-c">
+				<div class="date vnp">
+					16 Sep, 2019, 06:06 PM
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="trans--">Transaction Receipt</div>
+	<!-- billed -->
+	<div class="inv-tab incom">
+		<div class="inv-r">
+			<div class="inv-c">
+				<div class="inpl">
+					Order Number
+				</div>
+				<div class="inpv">
+					{{  data.productinfo	 }}
+				</div>
+			</div>
+			<div class="inv-c"></div>
+			<div class="inv-c">
+				<div class="inpl">
+					Amount Paid
+				</div>
+				<div class="inpv">
+					<i class="fas fa-rupee-sign"></i>{{  data.amount	 }}
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<!-- user details -->
+	<div class="_details _duphead">
+		Details
+	</div>
+	<div class="inv-tab">
+		<div class="inv-r">
+			<div class="inv-c">
+				<div class="inp-des">
+					{{data.firstname}} {{data.lastname}}
+				</div>
+				<div class="inp-des">
+					{{data.email}}
+				</div>
+				<div class="inp-des">
+					{{data.mobile}}
+				</div>
+			</div>
+			<div class="inv-c"></div>
+			<div class="inv-c">
+				<div class="inp-des">
+					<b>Txn Id:</b> {{data.txnid}}
+				</div>
+			</div>
+		</div>
+		
+		<div class="inv-r">
+			<div class="inv-col">
+				<div class="hr inv-t"></div>
+			</div>
+			<div class="inv-col">
+				<div class="hr inv-t"></div>
+			</div>
+			<div class="inv-col">
+				<div class="hr inv-t"></div>
+			</div>
+		</div>
+		
+		<div class="inv-r">
+			<div class="inv-c">
+				<div class="inp-des">
+					{{order.title}}
+				</div>
+				<div class="inp-des">
+					<b>Travellers count: </b>{{order.total_count}}
+				</div>
+				<div class="inp-des">
+					<b>Date: </b>{{order.date}}
+				</div>
+			</div>
+			<div class="inv-c"></div>
+			<div class="inv-c">
+				
+			</div>
+		</div>
+	</div>
+	
+	
+	<!-- breakdown -->
+	<div class="_breakdown _duphead">
+		Price Breakdown
+	</div>
+	<div class="inv-tab">
+	
+		<div class="inv-r inv-h">
+			<div class="inv-c">
+				<div class="inv-break">
+					
+				</div>
+			</div>
+			<div class="inv-c">
+				<div class="inv-break">
+					
+				</div>
+			</div>
+			<div class="inv-c">
+				<div class="inv-break">
+					
+				</div>
+			</div>
+		</div>
+		
+		<div class="inv-r inv-d">
+			<div class="inv-c">
+				<div class="inv-cr">
+					Adults
+				</div>
+			</div>
+			<div class="inv-c">
+				<div class="inv-cr inv-cent">
+					{{order.adult_count}}
+				</div>
+			</div>
+			<div class="inv-c">
+				<div class="inv-cr inv-cent">
+					<i class="fas fa-rupee-sign"></i> {{order.adult_bill}}
+				</div>
+			</div>
+		</div>
+		
+		{% if order.kids_count > 0 %}
+		<div class="inv-r inv-d">
+			<div class="inv-c">
+				<div class="inv-cr">
+					Children
+				</div>
+			</div>
+			<div class="inv-c">
+				<div class="inv-cr inv-cent">
+					{{order.kids_count}}
+				</div>
+			</div>
+			<div class="inv-c">
+				<div class="inv-cr inv-cent">
+					<i class="fas fa-rupee-sign"></i> {{order.kids_bill}}
+				</div>
+			</div>
+		</div>
+		{% endif %}
+		
+		<div class="inv-r inv-d">
+			<div class="inv-c">
+				<div class="inv-cr">
+					GST
+				</div>
+			</div>
+			<div class="inv-c">
+				<div class="inv-cr inv-cent">
+					{{order.gst}}
+				</div>
+			</div>
+			<div class="inv-c">
+				<div class="inv-cr inv-cent">
+					<i class="fas fa-rupee-sign"></i> {{order.gst_amount}}
+				</div>
+			</div>
+		</div>
+		<div class="inv-r">
+			<div class="inv-col">
+				<div class="hr inv-t"></div>
+			</div>
+			<div class="inv-col">
+				<div class="hr inv-t"></div>
+			</div>
+			<div class="inv-col">
+				<div class="hr inv-t"></div>
+			</div>
+		</div>
+		<div class="inv-r inv-d">
+			<div class="inv-c">
+				<div class="inv-cr">
+					Total Amount
+				</div>
+			</div>
+			<div class="inv-c">
+				
+			</div>
+			<div class="inv-c">
+				<div class="inv-cr inv-cent">
+					<i class="fas fa-rupee-sign"></i> {{order.total_amount}}
+				</div>
+			</div>
+		</div>
+		
+		<div class="inv-r inv-d">
+			<div class="inv-c">
+				<div class="inv-cr">
+					Paid Amount
+				</div>
+			</div>
+			<div class="inv-c">
+				
+			</div>
+			<div class="inv-c">
+				<div class="inv-cr inv-cent">
+					<i class="fas fa-rupee-sign"></i> {{order.amount_paid}}
+				</div>
+			</div>
+		</div>
+		
+		<div class="inv-r inv-d">
+			<div class="inv-c">
+				<div class="inv-cr">
+					To be paid 
+				</div>
+			</div>
+			<div class="inv-c">
+				
+			</div>
+			<div class="inv-c">
+				<div class="inv-cr inv-cent">
+					<i class="fas fa-rupee-sign"></i> {{order.amount_paid}}
+				</div>
+			</div>
+		</div>
+		
+	</div>
+	<div class="inv-inf">
+	<p>
+		<b>NOTE:</b> This is computer generated receipt and does not require physical signature.
+	</p>
+	<p>
+		<b>DISCLAIMER:</b> Psdfmk eoir we toertipwe qwker we wpeo fplsddforit lkpkmn.
+	</p>
+	<p>
+			GST Identification Number - 09AAACO4007A1Z3
+	</p>
+
+	
+	
+	</div>
+
+</div>

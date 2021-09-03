@@ -1,0 +1,371 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+	<div class="bk-block">
+	<style>
+.iohq {
+    font-size: 80%;
+    color: #4646a7;
+    border: solid #c2eff5;
+    border-width: 0 0 1px 0;
+    margin-bottom: 10px;
+}
+	.disabled-block {
+    color: #b7b7b7;
+    background: #f8ffff;
+}
+.dot-block {
+    padding: 0 17px 40px 17px;
+    border-style: dashed;
+    border-width: 0 0 0 2px;
+    border-color: #FF9800;
+    margin-left: 10px;
+}
+
+.b-c-p:before{content: '1';}
+.b-c-t:before{content: '2';}
+.b-c-c:before{content: '3';}
+
+	.bk-block {
+    background: white;
+}
+	.leftser-- {
+    
+    width: 0px;
+    min-height: 400px;
+}
+.-ldf {
+    float: left;
+}
+.rightser-- {
+    width: 750px;
+}
+.thghut {
+    font-size: 120%;
+    font-weight: bold;
+    color: #7c4fb1;
+    margin: 10px 0;
+}
+.thgu:before {
+    content: '- ';
+}
+.thgui {
+    font-size: 85%;
+    padding: 10px;
+    margin: 10px 0;
+    border: solid 1px #efefef;
+    border-radius: 4px;
+}
+.thgu {
+    color: #4b4646;
+    font-size: 80%;
+    line-height: 1.8;
+    letter-spacing: .5px;
+}
+.cond- {
+    box-sizing: border-box;
+    padding: 2px;
+    color: #6b6767;
+    font-size: 80%;
+}
+.cond-b {
+    background: #e3f2ef;
+    padding: 10px;
+    margin: 10px 0;
+}
+.stater{
+	font-weight: bold;
+    float: left;
+}
+.chom {
+    font-size: 80%;
+}
+.bktb {
+    
+	width:100%;
+}
+.t100 {
+    width: 100%;
+}
+.tbell {
+    width: 30%;
+    vertical-align: top;
+    padding: 0;
+    margin: 0;
+}
+
+#netamount {
+    color: red;
+    font-weight: bold;
+    text-decoration: line-through;
+}
+.amnt-dis {
+    font-size: 80%;
+    color: #9b9999;
+}
+#netpay {
+    color: #117e15;
+    font-size: 150%;
+    font-weight: bold;
+}
+.sderer {
+    padding: 10px;
+    border: solid #ceeaff 1px;
+    background: #f7f7ff;
+    border-radius: 2px;
+    margin: 20px 0;
+}
+.gopaybtn {
+    
+}
+button._dfbtn {
+    border: none;
+    padding: 10px;
+    color: white;
+    width: 200px;
+    border-radius: 2px;
+    font-weight: bold;
+    font-size: 110%;
+    margin: auto;
+    display: block;
+}
+.sumobtn {
+    width: 33%;
+    float: left;
+    min-height: 1px;
+}
+.c-heading-{font-weight:bold}
+
+	</style>
+	<div class="p-max-w">
+		<div class="package-header nav-esc">
+			
+				<div class="p-max-w">
+					<div class="p-padd">
+						<div class="iokf">
+							{{ prod.package_title }}
+						</div>
+						
+						<div class="ldfkk">
+							<div class="">
+								<span class="p-f p-f-d"><b>Duration:</b> {{prod.duration_days}} days</span>
+								<span class="p-f p-f-n">({{prod.duration_days}}D.{{prod.duration_days|add:"-1"}}N)</span>
+							</div>
+							<div>
+								<span class="p-f p-f-c"><b>Tour:</b> {{prod.mention_cities}}</span>
+							</div>
+						</div>
+						<div class="hr bgwit"></div>
+						
+					</div>
+				</div>
+				
+			
+		</div>
+		
+		<div class="plate clear">
+			
+			<div class="">
+			
+			
+				
+			
+									
+									
+									
+									<div class="dot-block">
+										<div class="iohs beef-circle b-c-p disabled-block"><span>Package Details</span> <span class="success"><i class='fas fa-check'></i></span></div>
+										
+										
+										
+									</div>
+									
+									
+									<div class="dot-block">
+										<div class="iohs beef-circle b-c-t disabled-block"><span>Traveller's Details</span> <span class="success"><i class='fas fa-check'></i></span></div>
+										
+											
+										
+										
+										
+									</div>
+									
+									
+									<div class="dot-block">
+										<div class="iohs beef-circle b-c-c">Checkout</div>
+										
+										<div class="c-container x-container mini">
+											
+											<div class=" clear">
+												<div class="ipot">
+													<label class="iohe">Lead Passenger</label>
+													<span class="iohv"> Lalit Singh</span>
+												</div>
+												<div class="ipot">
+													<label class="iohe">Phone</label>
+													<span class="iohv">9870780261</span>
+												</div>
+												<div class="ipot">
+													<label class="iohe">Email</label>
+													<span class="iohv">lalitsingh1796@gmail.com</span>
+												</div>
+												<div class="ipot">
+													<label class="iohe">Date</label>
+													<span class="iohv">14-08-2019</span>
+												</div>
+												
+												
+												
+											</div>
+											
+											<div class="sderer">
+												<div class="iohq"><span>Price Breakdown</span> <i class='fas fa-angle-down'></i></div>
+												<table class="t100">
+													<tbody>
+														<tr class="bktb">
+															<td class="tbell iohe">Adults</td>
+															<td class="tbell iohv-" id="_AP_n_">1</td>
+															<td class="tbell iohv-"><i class="fas fa-rupee-sign"></i> <span id="_GPA_">{{prod.generalprize_per_adult}}</span></td>
+														</tr>
+														{% if prod.are_children_allowed %}
+														<tr class="bktb">
+															<td class="tbell iohe">Children</td>
+															<td class="tbell iohv-" id="_CP_n_">0</td>
+															<td class="tbell iohv-"><i class="fas fa-rupee-sign"></i> <span id="_CPA_">0</span></td>
+														</tr>
+														{% endif %}
+														<tr class="bktb">
+															<td class="tbell iohe">GST</td>
+															<td class="tbell iohv-" id="_CP_n_">{{prod.gst}}%</td>
+															<td class="tbell iohv-"><i class="fas fa-rupee-sign"></i> <span id="_GST_"></span></td>
+														</tr>
+														<tr class="bktb iohe">
+															<td class="tbell">Total</td>
+															<td class="tbell"></td>
+															<td class="tbell">
+																<div id="netamount" class="amnt-1">
+																	<span id="netamnt"><i class="fas fa-rupee-sign"></i> <span id="tpay"></span>
+																</div>
+																<div class="amnt-dis"><span id="netdis"></span><span>% discount</span></div>
+																
+															</td>
+														</tr>
+														<tr class="bktb">
+															<td class="tbell"><b><span>You pay</span></b></td>
+															<td class="tbell"></td>
+															<td id="netpay" class="tbell">
+																<i class="fas fa-rupee-sign"></i>
+																<span id="upay">{{prod.costingprize_per_adult}}</span>
+															</td>
+														</tr>
+													</tbody>
+												</table>
+											</div>
+											<div class="cond-b"> 
+													<div class="cond-"><input type="checkbox" checked> I am aware with all the package details.</div>
+													<div class="cond-"><input type="checkbox" checked> I have read and agree to the <a href="#">payment policy</a>.</div>
+													<div class="cond-"><input type="checkbox" checked> I have read and agree to the <a href="#">medical policy</a>.</div>
+													<div class="cond-"><input type="checkbox" checked> I have read and agree to the <a href="#">cancellation policy</a>.</div>
+											</div>
+											<div class="">
+												<div class="btn-flter">
+												<div class="clear">
+													
+													<div class="sumo-btn-3 ">
+														<div class="gopaybtn ">
+															<button class="_dfbtn bookbtn">Pay Now</button>
+														</div>
+													</div>
+												</div>
+												</div>
+											</div>
+											
+										
+										</div>
+										
+									</div>
+									
+									
+									
+									
+									
+									
+									
+				
+				<script>
+				
+				
+			_bluPack = {
+					'id':'{{prod.id}}',
+					'gpa':'{{prod.generalprize_per_adult}}',
+					'cpa':'{{prod.costingprize_per_adult}}',
+					'gpc':'{{prod.generalprize_per_child}}',
+					'cpc':'{{prod.costingprize_per_child}}',
+					'gst':'{{prod.gst}}',
+					'ds':'{{prod.discount_pax2}}',
+					
+					'dates':'{{prod.dates}}',
+					'bk':'{{prod.is_booking_open}}',
+					'cp':'{{prod.is_couple_only}}',
+					'_htk':'{{prod.is_or_has_trekking}}',
+					'_hgr':'{{prod.is_it_group_package}}',
+					'_hex':'{{prod.is_expedition}}'
+				} // delete this from ini	
+						
+		var cart={
+			
+			
+			ini:function(){
+				this._cart=_bluPack;
+				this.fetc();
+				$("#ALSCNT,#KDSCNT").trigger("change");
+				console.log(this._cart)
+				},
+				
+			fetc:function(){
+				ad=$("#ALSCNT");
+				cl=$("#KDSCNT");
+				adcl = $("#ALSCNT,#KDSCNT");
+				$(adcl).change(function(){
+					gpa=(parseInt)(cart._cart.gpa);
+					gpc=(parseInt)(cart._cart.gpc);
+					na=(parseInt)(ad.val())*gpa;
+					ka=(parseInt)(cl.val())*gpc;
+					ds=(parseInt)(cart._cart.ds);
+					_tc=na+ka;
+					gst=((parseInt)(cart._cart.gst)/100)*_tc;
+					tc=_tc+gst;
+					td=tc-(tc*((parseInt)(cart._cart.ds)/100));
+					$("#_CP_n_").html(cl.val());
+					$("#_AP_n_").html(ad.val());
+					$("#_GPA_").html(na);
+					$("#_CPA_").html(ka);
+					$("#_GST_").html(gst);
+					$("#tpay").html(tc);
+					$("#upay").html(td);
+					$("#netdis").html(ds);
+					
+					console.log(gpa);
+				})
+				
+			},
+			beforeSubmit:function(){
+				this.fetch()
+			}
+				
+		
+		}
+	
+				
+				cart.ini();
+				
+				</script>
+					
+			</div>
+		</div>
+	</div>
+
+	</div>
+{% endblock %}
+	

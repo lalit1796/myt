@@ -1,0 +1,791 @@
+{% load static %}
+
+
+<style type="text/css">
+
+div#logblock {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    overflow-y: scroll;
+    z-index: 101;
+    top: 0;
+    left: 0;
+	background: rgba(0, 0, 0, 0.2);
+	background: linear-gradient(-45deg, rgba(147,26,222,0.83) 0%, rgba(28,206,234,0.82) 100%);
+	background-image: url("{% static  'thumbs/bgd1.png'%}");
+    background-size: cover;
+    background-position: 0 0;
+}
+.logmodal.hidden {display:none}
+.logmodal.show {display:block}
+
+ 
+.brdrbx, ::after, ::before {
+    box-sizing: border-box;
+}
+ .logmod {
+    display: block;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    opacity: 1;
+    z-index: 1;
+    padding: 0 10px;
+}
+.logmod__wrapper {
+    display: block;
+    background: #fff;
+    position: relative;
+    max-width: 550px;
+    box-shadow: 0 0 6px #848484;
+    margin: 0 auto 60px auto;
+    border: solid 1px #a5a5a5;
+    border-radius: 6px;
+    overflow: hidden;
+}
+.logclshold {
+    display: table;
+    margin: auto;
+    padding: 30px;
+    white-space: nowrap;
+    height: 30px;
+    right: 47.5%;
+    top: 50px;
+    text-align: center;
+    line-height: 30px;
+    font-size: 20px;
+    font-weight: bold;
+} 
+.logmod__close:hover{text-decoration:underline;cursor: pointer;}
+.logmod__container {
+	 overflow: hidden;
+	 width: 100%;
+}
+ .logmod__tab {
+	 position: relative;
+	 width: 100%;
+	 height: 0;
+	 overflow: hidden;
+	 opacity: 0;
+	 visibility: hidden;
+}
+ .logmod__tab-wrapper {
+	 width: 100%;
+	 height: auto;
+	 overflow: hidden;
+}
+ .logmod__tab.show {
+	 opacity: 1;
+	 height: 100%;
+	 visibility: visible;
+}
+ .logmod__tabs {
+	 list-style: none;
+	 padding: 0;
+	 margin: 0;
+}
+ .logmod__tabs li.current a {
+	 background: #fff;
+	 color: #333;
+}
+ .logmod__tabs li a {
+	 width: 50%;
+	 position: relative;
+	 float: left;
+	 text-align: center;
+	 background: #d2d8d8;
+	 line-height: 50px;
+	 text-decoration: none;
+	 color: #809191;
+	 text-transform: uppercase;
+	 font-weight: 700;
+	 font-size: 16px;
+	 cursor: pointer;
+}
+ .logmod__tabs li a:focus {
+	 outline: dotted 1px;
+}
+ .logmod__heading {
+	 text-align: center;
+	 padding: 12px 0 12px 0;
+}
+ .logmod__heading-subtitle {
+	 display: block;
+	 font-weight: 400;
+	 font-size: 15px;
+	 color: #888;
+	 line-height: 48px;
+}
+ .logmod__form {
+	 border-top: 1px solid #e5e5e5;
+}
+ .logmod__alter {
+	 display: block;
+	 position: relative;
+	 margin-top: 7px;
+}
+ .logmod__alter .connect:last-child {
+	 border-radius: 0 0 4px 4px;
+}
+ .connect {
+    overflow: hidden;
+    position: relative;
+    display: block;
+    width: 100%;
+    text-decoration: none;
+    font-size: 15px;
+    line-height: 50px;
+}
+ .connect:focus, .connect:hover, .connect:visited {
+	 color: #fff;
+	 text-decoration: none;
+}
+ .connect__icon {
+	 vertical-align: middle;
+	 float: left;
+	 width: 70px;
+	 text-align: center;
+	 
+}
+ .connect__context {
+	 vertical-align: middle;
+	 text-align: center;
+}
+ .connect.facebook {
+	 background: #3b5998;
+	 color: #fff;
+}
+ .connect.facebook a {
+	 color: #fff;
+}
+ .connect.facebook .connect__icon {
+	 background: #283d68;
+}
+ .connect.googleplus {
+	 background: #dd4b39;
+	 color: #fff;
+}
+ .connect.googleplus a {
+	 color: #fff;
+}
+ .connect.googleplus .connect__icon {
+	 background: #b52f1f;
+}
+ .simform {
+	 position: relative;
+}
+ .simform__actions {
+	 padding: 15px;
+	 font-size: 14px;
+}
+ .simform__actions .sumbit {
+	 height: 48px;
+	 color: #fff;
+	 width: 100%;
+	 font-weight: 700;
+	 font-size: 16px;
+	 background: #4caf50;
+	 margin-top: 7px;
+}
+ .simform__actions-sidetext {
+    padding: 18px 10px;
+    color: #5a5a5b;
+    display: table;
+    margin: auto;
+}
+
+input{outline:none}
+ .sminputs {
+	 border-bottom: 1px solid #e5e5e5;
+}
+.sminputs .input {
+    display: block;
+    position: relative;
+    padding: 3px 11px;
+    background-color: #fff;
+    border-radius: 0;
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+ .sminputs .input.active {
+	 background: #eee;
+}
+ .sminputs .input.active .hide-password {
+	 background: #eee;
+}
+ .sminputs .input.full {
+	 width: 100%;
+}
+ .sminputs .input label {
+	 overflow: hidden;
+	 text-overflow: ellipsis;
+	 white-space: nowrap;
+	 display: block;
+	 width: 100%;
+	 text-transform: uppercase;
+	 letter-spacing: 1px;
+	 font-weight: 700;
+	 font-size: 12px;
+	 cursor: pointer;
+	 line-height: 24px;
+}
+ .sminputs .input input {
+	 postion: relative;
+	 display: inline-block;
+	 height: 24px;
+	 font-size: 15px;
+	 line-height: 19.2px;
+	 color: #555;
+	 border-radius: 4px;
+	 vertical-align: middle;
+	 box-shadow: none;
+	 box-sizing: border-box;
+	 width: 100%;
+	 height: auto;
+	 border: none;
+	 padding: 0;
+	 cursor: pointer;
+	 background-color: transparent;
+	 color: rgba(75, 89, 102, 0.85);
+}
+ .sminputs .hide-password {
+	 display: inline-block;
+	 position: absolute;
+	 right: 0;
+	 top: 0;
+	 padding: 0 15px;
+	 border-left: 1px solid #e4e4e4;
+	 font-size: 14px;
+	 background: #fff;
+	 overflow: hidden;
+	 color: #444;
+	 cursor: pointer;
+	 margin-top: 12px;
+	 line-height: 48px;
+}
+ 
+ .btn, .simform__actions .sumbit {
+	line-height: normal;
+    white-space: nowrap;
+    vertical-align: middle;
+    text-align: center;
+    cursor: pointer;
+    box-sizing: border-box;
+    border: none;
+    outline: none;
+    outline-offset: 0;
+    font-weight: 400;
+    box-shadow: none;
+    min-width: 90px;
+    padding: 10px 14px;
+    display: block;
+    margin: auto;
+	border-radius: 2px;
+}
+ .btn.full, .simform__actions .sumbit.full {
+	 width: 100%;
+}
+ .btn.lg, .simform__actions .sumbit.lg {
+	 min-width: 125px;
+	 padding: 17px 14px;
+	 font-size: 22px;
+	 line-height: 1.3;
+}
+ .btn.sm, .simform__actions .sumbit.sm {
+	 min-width: 65px;
+	 padding: 4px 12px;
+	 font-size: 14px;
+}
+ .btn.xs, .simform__actions .sumbit.xs {
+	 min-width: 45px;
+	 padding: 2px 10px;
+	 font-size: 10px;
+	 line-height: 1.5;
+}
+ .btn.circle, .simform__actions .sumbit.circle {
+	 overflow: hidden;
+	 width: 56px;
+	 height: 56px;
+	 min-width: 56px;
+	 line-height: 1;
+	 padding: 0;
+	 border-radius: 50%;
+}
+ .btn.circle.lg, .simform__actions .sumbit.circle.lg {
+	 width: 78px;
+	 height: 78px;
+	 min-width: 78px;
+}
+ .btn.circle.sm, .simform__actions .sumbit.circle.sm {
+	 width: 40px;
+	 height: 40px;
+	 min-width: 40px;
+}
+ .btn.circle.xs, .simform__actions .sumbit.circle.xs {
+	 width: 30px;
+	 height: 30px;
+	 min-width: 30px;
+}
+ .btn:focus, .simform__actions .sumbit:focus, .btn:active, .simform__actions .sumbit:active, .btn.active, .simform__actions .sumbit.active, .btn:active:focus, .simform__actions .sumbit:active:focus, .btn.active:focus, .simform__actions .sumbit.active:focus {
+	 outline: 0;
+	 outline-offset: 0;
+	 box-shadow: none;
+}
+ .btn.red, .simform__actions .sumbit.red {
+	 background: #f44336;
+	 color: #fff;
+}
+ .btn.red:active, .simform__actions .sumbit.red:active, .btn.red:focus, .simform__actions .sumbit.red:focus {
+	 background-color: #ef1d0d;
+}
+ .btn.red:hover, .simform__actions .sumbit.red:hover {
+	 background-color: #f32c1e;
+}
+ .btn.pink, .simform__actions .sumbit.pink {
+	 background: #e91e63;
+	 color: #fff;
+}
+ .btn.pink:active, .simform__actions .sumbit.pink:active, .btn.pink:focus, .simform__actions .sumbit.pink:focus {
+	 background-color: #c61350;
+}
+ .btn.pink:hover, .simform__actions .sumbit.pink:hover {
+	 background-color: #d81558;
+}
+ .btn.purple, .simform__actions .sumbit.purple {
+	 background: #9c27b0;
+	 color: #fff;
+}
+ .btn.purple:active, .simform__actions .sumbit.purple:active, .btn.purple:focus, .simform__actions .sumbit.purple:focus {
+	 background-color: #7b1f8a;
+}
+ .btn.purple:hover, .simform__actions .sumbit.purple:hover {
+	 background-color: #89229b;
+}
+ .btn.deep-purple, .simform__actions .sumbit.deep-purple {
+	 background: #673ab7;
+	 color: #fff;
+}
+ .btn.deep-purple:active, .simform__actions .sumbit.deep-purple:active, .btn.deep-purple:focus, .simform__actions .sumbit.deep-purple:focus {
+	 background-color: #532f94;
+}
+ .btn.deep-purple:hover, .simform__actions .sumbit.deep-purple:hover {
+	 background-color: #5c34a4;
+}
+ .btn.indigo, .simform__actions .sumbit.indigo {
+	 background: #3f51b5;
+	 color: #fff;
+}
+ .btn.indigo:active, .simform__actions .sumbit.indigo:active, .btn.indigo:focus, .simform__actions .sumbit.indigo:focus {
+	 background-color: #334293;
+}
+ .btn.indigo:hover, .simform__actions .sumbit.indigo:hover {
+	 background-color: #3849a2;
+}
+ .btn.blue, .simform__actions .sumbit.blue {
+	 background: #2196f3;
+	 color: #fff;
+}
+ .btn.blue:active, .simform__actions .sumbit.blue:active, .btn.blue:focus, .simform__actions .sumbit.blue:focus {
+	 background-color: #0c7fda;
+}
+ .btn.blue:hover, .simform__actions .sumbit.blue:hover {
+	 background-color: #0d8aee;
+}
+ .btn.light-blue, .simform__actions .sumbit.light-blue {
+	 background: #03a9f4;
+	 color: #fff;
+}
+ .btn.light-blue:active, .simform__actions .sumbit.light-blue:active, .btn.light-blue:focus, .simform__actions .sumbit.light-blue:focus {
+	 background-color: #028ac7;
+}
+ .btn.light-blue:hover, .simform__actions .sumbit.light-blue:hover {
+	 background-color: #0398db;
+}
+ .btn.cyan, .simform__actions .sumbit.cyan {
+	 background: #00bcd4;
+	 color: #fff;
+}
+ .btn.cyan:active, .simform__actions .sumbit.cyan:active, .btn.cyan:focus, .simform__actions .sumbit.cyan:focus {
+	 background-color: #0093a6;
+}
+ .btn.cyan:hover, .simform__actions .sumbit.cyan:hover {
+	 background-color: #00a5bb;
+}
+ .btn.teal, .simform__actions .sumbit.teal {
+	 background: #009688;
+	 color: #fff;
+}
+ .btn.teal:active, .simform__actions .sumbit.teal:active, .btn.teal:focus, .simform__actions .sumbit.teal:focus {
+	 background-color: #00685e;
+}
+ .btn.teal:hover, .simform__actions .sumbit.teal:hover {
+	 background-color: #007d71;
+}
+ .btn.green, .simform__actions .sumbit.green {
+	 background: #4caf50;
+	 color: #fff;
+}
+ .btn.green:active, .simform__actions .sumbit.green:active, .btn.green:focus, .simform__actions .sumbit.green:focus {
+	 background-color: #3e8f41;
+}
+ .btn.green:hover, .simform__actions .sumbit.green:hover {
+	 background-color: #449d48;
+}
+ .btn.light-green, .simform__actions .sumbit.light-green {
+	 background: #8bc34a;
+	 color: #fff;
+}
+ .btn.light-green:active, .simform__actions .sumbit.light-green:active, .btn.light-green:focus, .simform__actions .sumbit.light-green:focus {
+	 background-color: #74a838;
+}
+ .btn.light-green:hover, .simform__actions .sumbit.light-green:hover {
+	 background-color: #7eb73d;
+}
+ .btn.lime, .simform__actions .sumbit.lime {
+	 background: #cddc39;
+	 color: #fff;
+}
+ .btn.lime:active, .simform__actions .sumbit.lime:active, .btn.lime:focus, .simform__actions .sumbit.lime:focus {
+	 background-color: #b6c423;
+}
+ .btn.lime:hover, .simform__actions .sumbit.lime:hover {
+	 background-color: #c6d626;
+}
+ .btn.yellow, .simform__actions .sumbit.yellow {
+	 background: #ffeb3b;
+	 color: #fff;
+}
+ .btn.yellow:active, .simform__actions .sumbit.yellow:active, .btn.yellow:focus, .simform__actions .sumbit.yellow:focus {
+	 background-color: #ffe60d;
+}
+ .btn.yellow:hover, .simform__actions .sumbit.yellow:hover {
+	 background-color: #ffe822;
+}
+ .btn.amber, .simform__actions .sumbit.amber {
+	 background: #ffc107;
+	 color: #fff;
+}
+ .btn.amber:active, .simform__actions .sumbit.amber:active, .btn.amber:focus, .simform__actions .sumbit.amber:focus {
+	 background-color: #d8a200;
+}
+ .btn.amber:hover, .simform__actions .sumbit.amber:hover {
+	 background-color: #edb100;
+}
+ .btn.orange, .simform__actions .sumbit.orange {
+	 background: #ff9800;
+	 color: #fff;
+}
+ .btn.orange:active, .simform__actions .sumbit.orange:active, .btn.orange:focus, .simform__actions .sumbit.orange:focus {
+	 background-color: #d17d00;
+}
+ .btn.orange:hover, .simform__actions .sumbit.orange:hover {
+	 background-color: #e68900;
+}
+ .btn.deep-orange, .simform__actions .sumbit.deep-orange {
+	 background: #ff5722;
+	 color: #fff;
+}
+ .btn.deep-orange:active, .simform__actions .sumbit.deep-orange:active, .btn.deep-orange:focus, .simform__actions .sumbit.deep-orange:focus {
+	 background-color: #f33a00;
+}
+ .btn.deep-orange:hover, .simform__actions .sumbit.deep-orange:hover {
+	 background-color: #ff4409;
+}
+ .btn.brown, .simform__actions .sumbit.brown {
+	 background: #795548;
+	 color: #fff;
+}
+ .btn.brown:active, .simform__actions .sumbit.brown:active, .btn.brown:focus, .simform__actions .sumbit.brown:focus {
+	 background-color: #5c4137;
+}
+ .btn.brown:hover, .simform__actions .sumbit.brown:hover {
+	 background-color: #694a3e;
+}
+ .btn.grey, .simform__actions .sumbit.grey {
+	 background: #9e9e9e;
+	 color: #fff;
+}
+ .btn.grey:active, .simform__actions .sumbit.grey:active, .btn.grey:focus, .simform__actions .sumbit.grey:focus {
+	 background-color: #878787;
+}
+ .btn.grey:hover, .simform__actions .sumbit.grey:hover {
+	 background-color: #919191;
+}
+ .btn.blue-grey, .simform__actions .sumbit.blue-grey {
+	 background: #607d8b;
+	 color: #fff;
+}
+ .btn.blue-grey:active, .simform__actions .sumbit.blue-grey:active, .btn.blue-grey:focus, .simform__actions .sumbit.blue-grey:focus {
+	 background-color: #4d6570;
+}
+ .btn.blue-grey:hover, .simform__actions .sumbit.blue-grey:hover {
+	 background-color: #566f7c;
+}
+ .special {
+	 color: #f44336;
+	 position: relative;
+	 text-decoration: none;
+	 transition: all 0.15s ease-out;
+}
+ .special:before {
+	 content: "";
+	 position: absolute;
+	 width: 100%;
+	 height: 1px;
+	 bottom: 0px;
+	 left: 0;
+	 background: #f00;
+	 visibility: hidden;
+	 transform: scaleX(0);
+	 transition: all 0.3s ease-in-out 0s;
+}
+ .special:hover {
+	 transition: all 0.15s ease-out;
+}
+ .special:hover:before {
+	 visibility: visible;
+	 transform: scaleX(1);
+}
+ #baseline {
+	 position: fixed;
+	 top: 0;
+	 bottom: 0;
+	 right: 0;
+	 left: 0;
+	 width: 100%;
+	 height: 100%;
+	 z-index: 999999;
+	 background-image: url(https://basehold.it/i/24);
+}
+ 
+
+</style>
+
+<div class="logmod">
+  <div class="logmod__wrapper">
+    
+    <div class="logmod__container">
+      <ul class="logmod__tabs">
+        <li data-tabtar="lgm-2"><a href="#">Login</a></li>
+        <li data-tabtar="lgm-1"><a href="#">Sign Up</a></li>
+      </ul>
+      <div class="logmod__tab-wrapper">
+      <div class="logmod__tab lgm-1">
+        <div class="logmod__heading">
+          <span id="responselg-" class="logmod__heading-subtitle">Enter your details <strong>to create an acount</strong></span>
+        </div>
+        <div class="logmod__form">
+          <form accept-charset="utf-8" action="{% url 'signup' %}" class="simform poperform" method="POST">
+			<div>
+              <div>
+				{% csrf_token %}
+				<input name="src" type="hidden" value="{{ request.get_full_path }}">
+              </div>
+            </div>
+			<div class="sminputs brdrbx">
+              <div class="input full brdrbx">
+                <label class="string optional brdrbx" for="user-name">Your First Name*</label>
+                <input name='fname' class="string optional brdrbx" maxlength="255" id="f-name" placeholder="Full Name" type="text" size="50" required />
+              </div>
+            </div>
+			<div class="sminputs brdrbx">
+              <div class="input full brdrbx">
+                <label class="string optional brdrbx" for="user-name">Your Last Name*</label>
+                <input name='lname' class="string optional brdrbx" maxlength="255" id="l-name" placeholder="Full Name" type="text" size="50" required />
+              </div>
+            </div>
+			<div class="sminputs brdrbx">
+              <div class="input full brdrbx">
+                <label class="string optional brdrbx" for="user-name">Mobile* (10 digits)</label>
+                <input name="mobile" class="string optional brdrbx" maxlength="255" id="user-mobile" placeholder="Mobile" type="text" size="50" required />
+              </div>
+            </div>
+            <div class="sminputs brdrbx">
+              <div class="input full brdrbx">
+                <label class="string optional brdrbx" for="user-name">Email*</label>
+                <input class="string optional brdrbx" name="email" maxlength="255" id="user-email" placeholder="Email" type="email" size="50" required />
+              </div>
+            </div>
+            <div class="sminputs brdrbx">
+              <div class="input string optional brdrbx sminputs">
+                <label class="string optional brdrbx" for="user-pw">Password*</label>
+                <input class="string optional brdrbx" maxlength="255" name="password" id="user-pw" placeholder="Password" type="password" size="50" required />
+              </div>
+			</div>
+			<div class="sminputs brdrbx">	
+              <div class="input string optional brdrbx sminputs">
+                <label class="string optional brdrbx" for="user-pw-repeat">Repeat password *</label>
+                <input class="string optional brdrbx" maxlength="255" name="conf" id="user-pw-repeat" placeholder="Repeat password" type="password" size="50" required />
+              </div>
+            </div>
+            <div class="simform__actions">
+              <button class="sumbit" name="commit" type="submit">Create Account</button>
+              <span class="simform__actions-sidetext">By creating an account you agree to our <a class="special" href="#" target="_blank" role="link">Terms & Privacy</a></span>
+            </div> 
+          </form>
+        </div> 
+        <div class="logmod__alter">
+          <div class="logmod__alter-container">
+          
+          </div>
+        </div>
+      </div>
+      <div class="logmod__tab lgm-2 brdrbx">
+        <div class="logmod__heading brdrbx">
+          <span id="responselg" class="logmod__heading-subtitle">Enter your email and password <strong>to sign in</strong></span>
+        </div> 
+        <div class="logmod__form brdrbx">
+          <form accept-charset="utf-8" action="{% url 'register' %}" class="simform brdrbx poperform" method="POST">
+			<div>
+              <div>
+				{% csrf_token %}
+              </div>
+            </div>
+            <div class="sminputs brdrbx">
+              <div class="input full brdrbx">
+                <label class="string optional brdrbx" for="user-name">Email*</label>
+                <input class="string optional brdrbx" name="email" maxlength="255" id="user-email-lg" placeholder="Email" type="email" size="50" required />
+              </div>
+            </div>
+            <div class="sminputs brdrbx">
+              <div class="input full brdrbx">
+                <label class="string optional brdrbx" for="user-pw">Password*</label>
+                <input class="string optional brdrbx" name="password" maxlength="255" id="user-pw-lg" placeholder="Password" type="password" size="50" required />
+                <span class="hide-password">Show</span>
+              </div>
+            </div>
+			
+            <div class="simform__actions" style="position:relative">
+              <button class="sumbit brdrbx" name="submit" type="submit">Login</button>
+              <span class="simform__actions-sidetext brdrbx">Forgot your password? <a class="special" role="link" href="#">Click here</a></span>
+            </div> 
+          </form>
+        </div> 
+        <div class="logmod__alter">
+          <div class="logmod__alter-container">
+           
+          </div>
+        </div>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+
+var LoginModalController = {
+    tabsElementName: ".logmod__tabs li",
+    tabElementName: ".logmod__tab",
+    inputElementsName: ".logmod__form .input",
+    hidePasswordName: ".hide-password",
+    
+    inputElements: null,
+    tabsElement: null,
+    tabElement: null,
+    hidePassword: null,
+    
+    activeTab: null,
+    tabSelection: 0, // 0 - first, 1 - second
+    
+    findElements: function () {
+        var base = this;
+        
+        base.tabsElement = $(base.tabsElementName);
+        base.tabElement = $(base.tabElementName);
+        base.inputElements = $(base.inputElementsName);
+        base.hidePassword = $(base.hidePasswordName);
+        
+        return base;
+    },
+    
+    setState: function (state) {
+    	var base = this,
+            elem = null;
+        
+        if (!state) {
+            state = 0;
+        }
+        
+        if (base.tabsElement) {
+        	elem = $(base.tabsElement[state]);
+            elem.addClass("current");
+            $("." + elem.attr("data-tabtar")).addClass("show");
+        }
+  
+        return base;
+    },
+    
+    getActiveTab: function () {
+        var base = this;
+        
+        base.tabsElement.each(function (i, el) {
+           if ($(el).hasClass("current")) {
+               base.activeTab = $(el);
+           }
+        });
+        
+        return base;
+    },
+   
+    addClickEvents: function () {
+    	var base = this;
+        
+        base.hidePassword.on("click", function (e) {
+            var $this = $(this),
+                $pwInput = $this.prev("input");
+            
+            if ($pwInput.attr("type") == "password") {
+                $pwInput.attr("type", "text");
+                $this.text("Hide");
+            } else {
+                $pwInput.attr("type", "password");
+                $this.text("Show");
+            }
+        });
+ 
+        base.tabsElement.on("click", function (e) {
+            var targetTab = $(this).attr("data-tabtar");
+            
+            e.preventDefault();
+            base.activeTab.removeClass("current");
+            base.activeTab = $(this);
+            base.activeTab.addClass("current");
+            
+            base.tabElement.each(function (i, el) {
+                el = $(el);
+                el.removeClass("show");
+                if (el.hasClass(targetTab)) {
+                    el.addClass("show");
+                }
+            });
+        });
+        
+        base.inputElements.find("label").on("click", function (e) {
+           var $this = $(this),
+               $input = $this.next("input");
+            
+            $input.focus();
+        });
+        
+        return base;
+    },
+    
+    initialize: function () {
+        var base = this;
+        
+        base.findElements().setState().getActiveTab().addClickEvents();
+    }
+};
+
+$(document).ready(function() {
+    LoginModalController.initialize();
+});
+
+
+</script>
+

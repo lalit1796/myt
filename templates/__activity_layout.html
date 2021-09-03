@@ -1,0 +1,511 @@
+{% extends 'base.html' %}
+
+{% block css %}
+<style>
+.footer{display:none !important}
+.navigation{
+	background: #ffce00;
+}
+</style>
+
+
+<style>
+button.bdv- {
+    display: block;
+    width: 100%;
+}
+.inp-d {
+    border: solid 1px #e1dcdc;
+    padding: 4px;
+    width: 100%;
+    display: table-cell;
+	font-weight: bold;
+}
+.gbjp {
+    padding: 0 12px;
+}
+.input-group{
+	display: table;
+    width: 100%;
+}
+.btn-p-f- {
+    min-width: 300px;
+    max-width: 700px;
+}
+.tbleu {
+    max-width: 500px;
+	margin: auto;
+}
+.ioke- {
+    margin: 3px 0;
+    padding: 0 0 6px 0;
+}
+.iohemb {
+    width: 100%;
+    overflow: hidden;
+}
+span.input-group-btn {
+    display: table-cell;
+    width: 20px;
+}
+.iohemb>iframe {
+    width: 100%;
+}
+.navigation,.abbi-sw {
+   
+}
+
+
+.none {
+    height: 0;
+    overflow: hidden;
+}
+.desk-mid{
+	display:none;
+	}
+a.bdv- {
+    color: white;
+    width: 100%;
+    display: block;
+}
+.cal-hed {
+    width: 50%;
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.spann {
+    display: table;
+    margin: auto;
+}
+.image-p-f, .img-p-f, .bontu {
+		width: 100%;
+	}
+	
+.roll-btn {
+    font-size: 11px;
+    line-height: 1.33;
+}
+.rebot {
+    border: solid 1px grey;
+    width: 100%;
+    font-size: 16px;
+    padding: 4px;
+}
+.footer{display:none;}	
+@media(min-width:717px){
+	.footer{display:block !important}
+	.image-p-f, .img-p-f, .bontu {
+		width: 700px;
+		
+	}
+	
+
+.roll-btn {
+    font-size: 14px;
+    line-height: unset;
+}
+}	
+@media(min-width:1020px){
+.flt-p {
+    float: left;
+    box-sizing: border-box;
+    margin: auto;
+}
+.cell{
+	padding:0 2px;
+}
+.desk-mid{
+	display:block
+	}
+.booking-cal {
+    background: white;
+    position: relative;
+   
+    width: 100%;
+    
+    display: table;
+   
+    padding: 6px;
+    box-shadow: unset;
+    z-index: 0;
+}	
+	
+}
+</style>
+
+
+
+{% endblock %}
+
+
+
+
+{% block content %}
+
+	
+
+
+
+
+	<!-- v2 -->
+	<div class="actpage">
+	
+	
+	
+	
+	
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<div class="pagesector">
+	
+		
+		
+		<div class="section _pck content_package">
+			
+			
+				<div class="package-header nav-esc">
+				
+					<div class="p-max-w">
+						<div class="p-padd clear">
+							<div class="mappr bontu flt-p">
+								<a href="{% url 'home' %}" class="_dflnk lik-h">Home</a> > 
+								<a href="{% url 'activity_all' %}" class="_dflnk lik-h">Activity</a> > 
+								<a href="{% url 'activity_cat_profile' slug=sale.name.slug %}" class="_dflnk lik-h">{{ sale.name.activity_name }}</a>
+							</div>
+							<div class="bontu flt-p">
+								<div class="iokf">Paragliding <span class="iokfs">Basadpur</span></div>
+							</div>
+						
+						</div>
+					</div>
+					
+				
+				</div>
+				<div class="p-max-w">
+					
+						
+						<div class="p-head-">
+							<div class="slab clear">
+								<div class="image-p-f flt-p">
+									
+									<div id='feurate' class="featured-slider h100">
+										<div class="slider-noescape h100">
+											<ul class="nolist relative h100 _crul_">
+												<li class="slider-item selected">
+													<div class="img-regrestion">
+														<img class="timber img-item image-p-f" src="{{ sale.featured_img_1.url }}"/>
+														<div class="fetue-txt">
+															<div class="ftu-con">{{sale.featured_title_1}}</div>
+														</div>
+													</div>
+												</li>
+												<li class="slider-item next">
+													<div class="img-regrestion">
+														<img class="timber img-item image-p-f" src="{{ sale.featured_img_2.url }}"/>
+														<div class="fetue-txt">
+															<div class="ftu-con">{{sale.featured_title_2}}</div>
+														</div>
+													</div>
+												</li>
+												<li class="slider-item">
+													<div class="img-regrestion">
+														<img class="timber img-item image-p-f" src="{{ sale.featured_img_3.url }}"/>
+														<div class="fetue-txt">
+															<div class="ftu-con">{{sale.featured_title_3}}</div>
+														</div>
+													</div>
+												</li>
+												<li class="slider-item">
+													<div class="img-regrestion">
+														<img class="timber img-item image-p-f" src="{{ sale.featured_img_4.url }}"/>
+														<div class="fetue-txt">
+															<div class="ftu-con">{{sale.featured_title_4}}</div>
+														</div>
+													</div>
+												</li>
+												{% if sale.featured_img_5 %}
+												<li class="slider-item prev">
+													<div class="img-regrestion">
+														<img class="timber img-item image-p-f" src="{{ sale.featured_img_5.url }}"/>
+														<div class="fetue-txt">
+															<div class="ftu-con">{{sale.featured_title_5}}</div>
+														</div>
+													</div>
+												</li>
+												{% endif %}
+												{% if sale.featured_img_6 %}
+												<li class="slider-item prev">
+													<div class="img-regrestion">
+														<img class="timber img-item image-p-f" src="{{ sale.featured_img_6.url }}"/>
+														<div class="fetue-txt">
+															<div class="ftu-con">{{sale.featured_title_5}}</div>
+														</div>
+													</div>
+												</li>
+												{% endif %}
+												{% if sale.featured_img_7 %}
+												<li class="slider-item prev">
+													<div class="img-regrestion">
+														<img class="timber img-item image-p-f" src="{{ sale.featured_img_7.url }}"/>
+														<div class="fetue-txt">
+															<div class="ftu-con">{{sale.featured_title_7}}</div>
+														</div>
+													</div>
+												</li>
+												{% endif %}
+												{% if sale.featured_img_8 %}
+												<li class="slider-item prev">
+													<div class="img-regrestion">
+														<img class="timber img-item image-p-f" src="{{ sale.featured_img_8.url }}"/>
+														<div class="fetue-txt">
+															<div class="ftu-con">{{sale.featured_title_5}}</div>
+														</div>
+													</div>
+												</li>
+												{% endif %}
+												{% if sale.featured_img_9 %}
+												<li class="slider-item prev">
+													<div class="img-regrestion">
+														<img class="timber img-item image-p-f" src="{{ sale.featured_img_9.url }}"/>
+														<div class="fetue-txt">
+															<div class="ftu-con">{{sale.featured_title_9}}</div>
+														</div>
+													</div>
+												</li>
+												{% endif %}
+												{% if sale.featured_img_10 %}
+												<li class="slider-item prev">
+													<div class="img-regrestion">
+														<img class="timber img-item image-p-f" src="{{ sale.featured_img_10.url }}"/>
+														<div class="fetue-txt">
+															<div class="ftu-con">{{sale.featured_title_10}}</div>
+														</div>
+													</div>
+												</li>
+												{% endif %}
+												
+
+											</ul>
+											<div class="buttons-slid">
+											<div id="btn-p" class="prev-btn slbtn"><i class='fas fa-arrow-left'></i></div>
+											<div id="btn-n" class="next-btn slbtn"><i class='fas fa-arrow-right'></i></div>
+											</div>
+										</div>
+									</div>
+									
+									
+
+								</div>
+								<div class="btn-p-f- flt-p wite desk-mid-inv p-block">
+									<div class="boxed-in gbjp">
+									<div>
+										<div class="lbdiv">
+											<div class="upzcd tbleu">
+												<div class="block">
+													<span class="ppfgh">
+														<i class="fas fa-rupee-sign"></i> {{sale.prize}}<span></span>
+													</span>
+													<span class="pprs">per person</span>
+												</div>
+												<div class="block">
+													<div>
+														
+														
+														<div class="ioke-">
+															<div class="iohs">Activity date </div>
+															<div>
+																</div>
+														</div>
+													</div>
+													
+												</div>
+												<div class="ioit">
+													- Taxes are not included in this price.
+												</div>
+												
+											</div>
+										</div>
+										<div class="lbdiv fwit tbleu upzcd">
+											<a href="{% url 'activity_booking_profile' slug=sale.uid %}" type="submit" id="goclick-"  class="_dflnk bookbtn bdv- bdpddr cent fwit" title="Book Online">Book Online</a>
+										</div>
+										<div class="lbdiv tbleu upzcd">
+											<span class="label-cont">
+												<b>Have doubts?</b><br><hr/>
+												<i>Contact our experts for all your answers.</i><br>
+												<b>9899889574</b><br>
+												<b>9567821348</b>
+											</span>
+										</div>
+										<div class="none">
+											<form id="goproactiv" data-through="1"  action="" method="POST">
+												{% csrf_token %}
+												<input type="hidden" name="id" value="{{sale.id}}">
+												<input type="hidden" name="slug" value="{{sale.slug}}">
+												
+															
+											</form>
+										</div>
+									</div>
+									</div>
+								</div>
+								<div class="flt-p bontu">
+									
+									<div class="jig-blk">
+										<div class="ioke x-container">
+											<div class="iohs"></div>
+											<div class="ioha iohv iohi">{{sale.intro|linebreaks}}</div>
+											<div class="ioha iohv iohi">{{sale.highlight|linebreaks}}</div>
+											
+										</div>
+										<div class="shomo clear">
+											<div class="rooter"><i class='fas fa-ellipsis-v'></i></div>
+											<div class="shomobtn">Expand</div>
+										</div>
+										
+									</div>
+									
+									{% if sale.inclusion %}
+									<div class="jig-blk">
+										<div class="ioke">
+											<div class="iohs">Advisory</div>
+											<div class="ioha iohv iohi">{{sale.inclusion|linebreaks}}</div>
+											
+											
+										</div>
+										
+									</div>
+									{% endif %}
+									{% if sale.exclusion %}
+									<div class="jig-blk">
+										<div class="ioke">
+											<div class="iohs">Advisory</div>
+											<div class="ioha iohv iohi">{{sale.exclusion|linebreaks}}</div>
+											
+											
+										</div>
+										
+									</div>
+									{% endif %}
+									{% if sale.activitypoint %}
+									<div class="jig-blk">
+										<div class="ioke">
+											<div class="iohs">Find Location</div>
+											<div class="ioha iohv iohi">{{ sale.activitypoint|linebreaks }}</div>
+											<div class="iohemb">{{ sale.mapembeed|safe }}</div>
+											
+											
+										</div>
+										
+									</div>
+									{% endif %}
+									{% if sale.requirement %}
+									<div class="jig-blk">
+										<div class="ioke">
+											<div class="iohs">Requirements</div>
+											<div class="ioha iohv iohi">{{sale.requirement|linebreaks}}</div>
+											
+											
+										</div>
+										
+									</div>
+									{% endif %}
+									{% if sale.advisory %}
+									<div class="jig-blk">
+										<div class="ioke">
+											<div class="iohs">Advisory</div>
+											<div class="ioha iohv iohi">{{sale.advisory|linebreaks}}</div>
+											
+											
+										</div>
+										
+									</div>
+									{% endif %}
+								</div>
+							</div>
+						</div>
+						
+						
+						
+							
+
+			
+				</div>
+				<div class="section secpanner content_explore custProf">
+					<div class="thumbpinsec">
+						<div class="thumbcol">
+							<div class="thumb-tec">
+								<div class="advslabl">
+									<span class="p-head">Nearby Activities</span>									
+								</div>
+								<div class="thumblist">
+									
+									{% for e in nearby %}
+										{%  include 'includes/nofoldactivity.html'%}
+									{% endfor %}
+									
+								</div>
+							</div>
+						</div>	
+					</div>
+				</div>
+				<div class="p-max-w">
+					<div class="advs ">
+						<div class="advslabl">Quick links</div>
+						<div class="plist qlinks">
+							
+								{% for q in qlinks %}
+									{% include 'includes/qlinks.html' %}
+								{% endfor %}
+							
+						</div>
+					</div>
+				</div>
+				<div class="wig">
+					{%  include 'includes/enqform.html'%}
+				</div>
+		
+		</div>
+	
+	
+	</div>
+	
+
+<script>
+
+ $("input[id='member_count']").TouchSpin({
+        min: 1,
+        max: 100,
+        stepinterval: 1,
+        maxboostedstep: 1,
+    });
+	
+	
+	
+					
+				$("#goclick").click(function(){
+					$("#goproactiv").submit();
+				})	
+
+</script>	
+</div>
+	<!-- v2 -->
+	
+{% endblock %}
+	

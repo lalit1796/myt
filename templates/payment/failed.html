@@ -1,0 +1,51 @@
+
+<style>
+.bk-block {
+    min-height: 600px;
+    background: #e5f4ff;
+}
+.h3 {
+    text-align: center;
+    font-size: 30px;
+    padding: 30px 0;
+	color: red;
+}
+.cel1 {
+    font-weight: bold;
+}
+.cel1, .cel2 {
+    display: table-cell;
+    padding: 6px 10px;
+}
+.failed-section {
+    margin: auto;
+    display: table;
+}
+.cel-tab {
+    display: table-row;
+}
+</style>
+<div class="h3"><i class='fas fa-exclamation-triangle'></i> Transaction failed!</div>
+<div class="failed-section">
+	
+
+	<div class="cel-tab">
+		<div class="cel1">Txn Id</div>
+		<div class="cel2">{{data.txnid}}</div>
+	</div>
+	
+	<div class="cel-tab">
+		<div class="cel1">Amount</div>
+		<div class="cel2">{{data.amount}}</div>
+	</div>
+	
+	<div class="cel-tab">
+		<div class="cel1">Txn Status</div>
+		<div class="cel2">{{data.status}}</div>
+	</div>
+	
+	<div class="cel-tab">
+		<div class="cel1"></div>
+		<div class="cel2">{{data.valid}}</div>
+	</div>
+</div>

@@ -1,0 +1,298 @@
+
+<div class="navgrab">
+<div class="shrt-logo">
+		<div class="logo-center">LOGO</div>
+	</div>
+<div class="navinsite">
+<nav>
+
+
+<!-- navigation panel -->
+	
+	<div class="navigation">
+		<div  class="navfloater secpanner">
+			<div class="col50 desk">
+				<div class="appi">
+					<a href="/" class="alink navlogo">LOGO</a>
+					{% if user.is_authenticated %}
+					<span class="_dflnk mi-logged pvdl" title="Logged in {{ user.get_short_name|title }}">
+						<span class="mi-log-ment mi-logment-inf">{{ user.get_short_name|title }} | </span>
+					</span>
+					<a href="{% url 'logout' %}?src={{ request.get_full_path }}" class="_dflnk mi-logged alink litmh" title="Logout ">
+						<span class="mi-log-ment mi-logment-link"> Logout</span>
+					</a>
+					{% else %}
+					<a href="#" data-rep='poplog' class="alink litm litmh jlog logger mi-log" title="Login or create account">
+						<span class="mi-log-ment mi-logment-link">Login / Create Account</span>
+					</a>
+					{% endif %}
+				</div>
+			</div>
+			<div class="col50">
+				<div class="appi textright">
+					<span class="litm mob-onl">
+						<span class="">
+							<a href="/" class="alink solo-ico-50"><span class="m-icon m-hom"></span></a>
+						</span>
+						<span class="">	
+							<a href="#" data-rep='jserc' class="alink solo-ico-50 solo-ico-des jtrig jserc" title="Search">
+								<span class="m-icon m-ser"></span>
+							</a>
+						</span>
+					</span>
+					<a href="#" data-rep='jglob' class="alink litm litmh jtrig jglob" title="Explore">
+						<span class="_tb16">
+							<span class="m-icon m-exp block-m"></span>
+							<span class="expl mentc block-m">Explore</span>
+						</span>
+					</a>
+					<a href="#" data-rep='jact' class="alink litm litmh jtrig jact" title="Activities">
+						<span class="_tb16">
+							<span class="m-icon m-act block-m"></span>
+							<span class="turs mentc block-m">Activities</span>
+						</span>
+					</a>
+					<a href="#" id="pop-mor-btn" class="alink litm litmh jlog" title="More">
+						<span class="_tb16">
+							<span class='m-icon m-mor block-m'></span>
+							<span class="userin mentc block-m">More</span>
+						</span>
+					</a>
+					<a href="#" data-rep='jserc' class="alink litm litmh jtrig jserc" title="Search">
+						<span class="_tb16">
+							<span class="m-icon m-ser block-m"></span>
+							<span class="expl mentc block-m"></span>
+						</span>
+					</a>
+					
+					
+					
+					
+				</div>
+				<div class="abbi">
+					<div id="pop-mor" class="abbi-sw">
+						{% if user.is_authenticated %}
+							
+						<span class="drob-menu-sr upperbound info pvdl _dflnk" title="">
+							<span class="">{{ user.get_full_name|title }}</span>
+						</span>
+						<a href="{% url 'logout' %}?src={{ request.get_full_path }}" data-rep='poplog' class="drob-menu-sr drob-menu-sr-h  bot-bod info pvdl _dflnk bot-bod" title="">
+							<span class="mi-log-ment mi-logment-link">Logout</span>
+						</a>
+						<a href="{% url 'profile' %}" class="drob-menu-sr drob-menu-sr-h _dflnk" title="">
+							</i><span class="">My Account</span>
+						</a>
+						<a href="{% url 'profile' %}" class="drob-menu-sr drob-menu-sr-h _dflnk bot-bod" title="">
+							</i><span class="">My Trips</span>
+						</a>
+						<a href="{% url 'profile' %}" class="drob-menu-sr drob-menu-sr-h _dflnk" title="">
+							</i><span class="">Privacy Policy</span>
+						</a>
+						<a href="{% url 'profile' %}" class="drob-menu-sr drob-menu-sr-h _dflnk" title="">
+							</i><span class="">Terms and Conditions</span>
+						</a>
+						
+						
+						
+						{% else %}
+						
+						<a href="#" data-rep='poplog' class="drob-menu-sr drob-menu-sr-h bot-bod info pvdl _dflnk logger" title="Login or Create account">
+							<span class="mi-log-ment mi-logment-link">Login / Create Account</span>
+						</a>
+						<a href="#" data-rep='poplog' class="drob-menu-sr pvdl _dflnk disabled bot-bod" title="">
+							<span class="">Account</span>
+						</a>
+						<a href="{% url 'profile' %}" class="drob-menu-sr drob-menu-sr-h _dflnk" title="">
+							</i><span class="">Privacy Policy</span>
+						</a>
+						<a href="{% url 'profile' %}" class="drob-menu-sr drob-menu-sr-h _dflnk" title="">
+							</i><span class="">Terms and Conditions</span>
+						</a>
+						
+						{% endif %}
+						
+					
+					</div>
+				</div>
+			</div>
+		</div>
+	
+	</div>
+	<!-- navigation panel -->
+	
+	<!-- menu -->
+
+	
+	
+	<div id='_jpan' class="jpan potin">
+		<div class="bhgon">
+			<div class="jpanhead">
+				<div class='jpanx clear'>
+					<div role="button" id="jclose" class="closebtn" title="close"><i class='fas fa-times'></i></div>
+				</div>
+			</div>
+			
+			<div class="jpanbody tikin">
+				<div id="_menulist" class="menulist">
+				
+					<div id="search" class="menuPan hide">
+						
+						
+						
+						
+						<form class="superform-" method="GET" action="{% url 'search' %}">
+							
+							<div class="sst-">
+							
+											<div class="interIP">
+												<input name="k" type="text" class="textip" placeholder="Search..." value="{{key}}" required />
+											</div>
+										
+											<div class="interBTN">
+												<div class="holderbtn">
+													<button type="submit" class="textsub"><i class="fas fa-search"></i></button>
+												</div>	
+											</div>
+							
+							</div>
+							
+						</form>
+						
+						
+						
+					</div>
+					<div id="explorer" class="menuPan hide">
+						<div class="uldiv">World's top adventure destinations</div>
+						{% for e in countries  %}
+						
+								<ul  class="nolist">
+									<li class="_d_li block">
+										<span class="li-head">{{e.country_name}}</span>
+									</li>
+									{% for n in cities  %}
+										
+										{% if n.country_id == e.id %}
+										
+										<li class="_d_li">
+											<a class="menu_anch" href="{% url 'city' slug=n.slug %}">{{n.city_name}}</a>
+										</li>
+										{% endif %}
+									{% endfor %}
+								</ul>		
+								
+						{% endfor %}
+						
+						
+					</div>
+					<div id="tours" class="menuPan hide">
+						<div class="uldiv">Amazing activities and adventures to explore</div>
+						
+						
+						
+						<ul  class="nolist">
+							
+							<li class="_d_li block">
+								<span class="li-head menu_anch">Land Adventure</span>
+							</li>
+							{% for a in activities %}
+							
+								{% if a.type == 'land' %}
+									
+									<li class="_d_li">
+										<a class="menu_anch" href="{% url 'activity_cat_profile' slug=a.slug %}">{{a.activity_name}}</a>
+									</li>
+								
+								{% endif %}
+							
+							{% endfor %}
+						
+						</ul>
+						<ul  class="nolist">
+							<li class="_d_li block">
+								<span class="li-head menu_anch">Water Activites</span>
+							</li>
+							{% for a in activities %}
+							
+								{% if a.type == 'water' %}
+									
+									<li class="_d_li">
+										<a class="menu_anch" href="{% url 'activity_cat_profile' slug=a.slug %}">{{a.activity_name}}</a>
+									</li>
+								
+								{% endif %}
+							
+							{% endfor %}
+							
+						</ul>
+						<ul  class="nolist">
+							<li class="_d_li block">
+								<span class="li-head menu_anch">Fly in Sky</span>
+							</li>
+							{% for a in activities %}
+							
+								{% if a.type == 'air' %}
+									
+									<li class="_d_li">
+										<a class="menu_anch" href="{% url 'activity_cat_profile' slug=a.slug %}">{{a.activity_name}}</a>
+									</li>
+								
+								{% endif %}
+							
+							{% endfor %}
+							
+						</ul>
+						<ul  class="nolist">
+							<li class="_d_li block">
+								<span class="li-head menu_anch">Explore</span>
+							</li>
+							{% for a in activities %}
+							
+								{% if a.type == 'other' %}
+									
+									<li class="_d_li">
+										<a class="menu_anch" href="{% url 'activity_cat_profile' slug=a.slug %}">{{a.activity_name}}</a>
+									</li>
+								
+								{% endif %}
+							
+							{% endfor %}
+							
+						</ul>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+<!-- menu -->
+
+</nav>	
+</div>
+
+<script>
+	
+	function _usrPipe(c){
+		{% if user.is_authenticated %}
+		if(c=="det"){
+			return "details";
+		}
+		else{
+			return true;
+		}
+		
+		{% else %}
+		if(c=="det"){
+			return "anonymous";
+		}
+		else{
+			return false;
+		}
+		
+		{% endif %}
+		
+	}
+	
+</script>
+
+</div>

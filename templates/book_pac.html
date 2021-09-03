@@ -1,0 +1,393 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+	<div class="bk-block">
+	<style>
+.dot-block {
+    padding: 0 17px 40px 17px;
+    border-style: dashed;
+    border-width: 0 0 0 2px;
+    border-color: #FF9800;
+    margin-left: 10px;
+}
+
+.b-c-p:before{content: '1';}
+.b-c-t:before{content: '2';}
+.b-c-c:before{content: '3';}
+
+	.bk-block {
+    background: white;
+}
+	.leftser-- {
+    
+    width: 0px;
+    min-height: 400px;
+}
+.-ldf {
+    float: left;
+}
+.rightser-- {
+    width: 750px;
+}
+.thghut {
+    font-size: 120%;
+    font-weight: bold;
+    color: #7c4fb1;
+    margin: 10px 0;
+}
+.thgui {
+    font-size: 85%;
+    padding: 10px;
+    margin: 10px 0;
+    border: solid 1px #e3f2ef;
+    border-radius: 4px;
+}
+.thgu {
+    color: #848080;
+    font-size: 90%;
+    line-height: 1.8;
+    letter-spacing: .5px;
+    padding: 4px 10px;
+    margin: 10px;
+    font-style: italic;
+}
+.cond- {
+    box-sizing: border-box;
+    padding: 2px;
+    color: #6b6767;
+    font-size: 80%;
+}
+.cond-b {
+    background: #e3f2ef;
+    padding: 10px;
+    margin: 10px 0;
+}
+.stater{
+	font-weight: bold;
+    float: left;
+}
+.chom {
+    font-size: 80%;
+}
+.bktb {
+    
+	width:100%;
+}
+.t100 {
+    width: 100%;
+}
+.tbell {
+    width: 30%;
+	vertical-align: top;
+}
+.t-mid {
+    color: #afadad;
+}
+#netamount {
+    color: red;
+    font-weight: bold;
+    text-decoration: line-through;
+}
+.amnt-dis {
+    font-size: 80%;
+    color: #9b9999;
+}
+#netpay {
+    color: #117e15;
+    font-size: 150%;
+    font-weight: bold;
+}
+.sderer {
+    padding: 10px;
+    border: solid #c8c8c8 1px;
+    background: white;
+    border-radius: 2px;
+    box-shadow: 2px 2px 6px #c6c3c3;
+}
+.gopaybtn {
+    
+}
+button._dfbtn {
+    border: none;
+    background: #FF9800;
+    font-size: 150%;
+    padding: 6px;
+    font-weight: bold;
+    color: white;
+    width: 100%;
+}
+button._dfbtn:active {
+    background: #FF5722;
+}
+.sumobtn {
+    width: 33%;
+    float: left;
+    min-height: 1px;
+}
+button.protopay {
+    margin: 10px auto;
+    display: table;
+    padding: 10px 20px;
+    font-size: 110%;
+    color: white;
+    border-radius: 4px;
+    font-weight: bold;
+}
+
+	</style>
+	<div class="p-max-w">
+		<div class="package-header nav-esc">
+			
+				<div class="p-max-w">
+					<div class="p-padd">
+						<div class="iokf">
+							This is the one! Book Now.
+						</div>
+						
+						
+						<div class="hr bgwit"></div>
+						
+					</div>
+				</div>
+				
+			
+		</div>
+		
+		<div class="plate clear">
+			
+			<div class="-ldf">
+			
+			
+				
+			
+									
+									
+									
+									<div class="dot-block">
+										<div class="iohs beef-circle b-c-p"><span>Package Details</span> <span class="success"><i class='fas fa-check'></i></span></div>
+										
+										<div class="c-container x-container mini">
+											
+											<div class="enq-form-inbi clear">
+												<div class="thghut">
+													{{ prod.package_title }}
+												</div>
+												<div class="ldfkk">
+													<div class="">
+														<span class="p-f p-f-d"><b>Duration:</b> {{prod.duration_days}} days</span>
+														<span class="p-f p-f-n">({{prod.duration_days}}D.{{prod.duration_days|add:"-1"}}N)</span>
+													</div>
+													<div>
+														<span class="p-f p-f-c"><b>Tour:</b> {{prod.mention_cities}}</span>
+													</div>
+													{% if prod.is_couple_only %}
+													<div>
+														<span class="p-f p-f-c"><b>Type:</b> Couple Special</span>
+													</div>
+													{% endif %}
+												</div>
+												<div class="b-block">
+													<div class="thgui">
+														{{prod.intro}}
+													</div>
+												</div>
+												
+												
+												
+												<div class="dettee0">
+													<div class="b-block">
+														<div class="clear chom">
+															<div class="stater">Insight</div>
+															<div class="shomobtn">Expand</div>
+														</div>
+														<div class="x-container b-container mini">
+															<p>
+																<span class="thgu">6D.5N</span>
+																<span class="thgu">{{prod.mention_cities}}</span>
+																<span class="thgu"><span>{{prod.agegroup|title}}</span> <span>age group</span> </span>
+																{% if prod.is_or_has_trekking%}
+																	<span class="thgu">Trekking</span>
+																{% endif %}
+																{% if prod.is_expedition%}
+																	<span class="thgu">Expedition</span>
+																{% endif %}
+																{% if prod.ic_couples_only%}
+																	<span class="thgu">Couples only</span>
+																{% endif %}
+																{% if prod.is_it_group_package%}
+																	<span class="thgu">Group package</span>
+																{% endif %}
+															</p>	
+														</div>
+														
+													</div>
+													<div class="b-block">
+														<div class="clear chom">
+															<div class="stater">Inclusion</div>
+															<div class="shomobtn">Expand</div>
+														</div>
+														<div class="x-container b-container mini">
+															{{ prod.inclusion|linebreaks }}
+														</div>
+														
+													</div>
+													<div class="b-block">
+														<div class="clear chom">
+															<div class="stater">Exclusion</div>
+															<div class="shomobtn">Expand</div>
+														</div>
+														<div class="x-container b-container mini">
+															{{ prod.exclusion|linebreaks }}
+														</div>
+														
+													</div>
+													<div class="b-block">
+														<div class="clear chom">
+															<div class="stater">Highlights</div>
+															<div class="shomobtn">Expand</div>
+														</div>
+														<div class="x-container b-container mini">
+															{{ prod.highlight|linebreaks }}
+														</div>
+														
+													</div>
+												
+												</div>
+												
+												
+												
+											</div>
+											
+										
+										</div>
+										
+									</div>
+									
+									
+									<div class="dot-block">
+										<div class="iohs beef-circle b-c-t">Traveller's Details</div>
+										
+										<div class="c-container x-container mini">
+											<form data-through="1" action="{% url 'package_checkout_profile' %}" method='POST'>
+											<div class="hidden">
+												{% csrf_token %}
+												<input type="hidden" name="slug" value="{{prod.url_title}}">
+												<input type="hidden" name="uid" value="{{prod.uid}}">
+											</div>
+											<div class="enq-form-inbi clear">
+												<p>
+													<label><b>Lead Passenger's Full Name</b></label><br>
+													<input required type="text" placeholder="Full Name" class="inp-t-enq" value="{{ user.get_full_name }}">
+												</p>
+												<p>
+													<label><b>Mobile</b></label><br>
+													<input required type="text" placeholder="Mobile" class="inp-t-enq" value="{{ user.profile.mobile }}">
+												</p>
+												<p>
+													<label><b>Email Address</b></label><br>
+													<input required type="email" placeholder="Email" class="inp-t-enq" value="{{ user.email }}">
+												</p>
+												<p>
+													<label><b>Departure date (dd-mm-yyyy)</b></label><br>
+													{% if date %}
+													<input id="bookingdate" required placeholder="Pick a date" type="text" value="{{date}}" class="inp-t-enq rebot">
+													{% else %}
+													<input id="bookingdate" required placeholder="Pick a date" type="text" class="inp-t-enq rebot">
+													{% endif %}
+												</p>
+												
+												{% if prod.is_couple_only %}
+												<p>
+													<label><b>Adults *(Couple only)</b></label><br>
+													<input id="ALSCNT" required="" type="number" value=2 class="inp-t-enq" disabled>
+												</p>
+												{% else %}
+												<p>
+													<label><b>Adults</b></label><br>
+													<input id="ALSCNT" required="" type="number" max=20 min=1 value=1 class="inp-t-enq">
+												</p>
+												{% endif %}
+												
+												{% if prod.are_children_allowed %}
+												<p>
+													<label><b>Children</b></label><br>
+													<input id="KDSCNT" required="" type="number" value="0" class="inp-t-enq">
+												</p>
+												{% endif %}
+												
+												
+											</div>
+											{% if user.is_authenticated %}
+											{% else %}
+											<div class="NotLoggedMsg">
+												<b>Desclaimer -</b>
+												<span> You are not logged in with any account.</span>
+												<span> You can continue with booking and see your booking.</span>
+											</div>
+											{% endif %}
+											<div class="act-msg">
+												<span>We do not share your information with anyone. For more information read our <a href="#">privacy policy</a></span></br>
+												<span>By submitting you allow us to contact you.</span>
+											</div>
+											<div class="clear">
+												<button type="submit" class="protopay bookbtn">Proceed to pay</button>
+											</div>
+											</form>
+										</div>
+										
+									</div>
+									
+									
+									<div class="dot-block">
+										<div class="iohs beef-circle b-c-c disabled-block">Checkout</div>
+										
+										
+										
+									</div>
+									
+									
+									
+									
+									
+									
+									
+				
+				
+				
+				<script>
+				
+				
+				
+				var availableDates = ["16-9-2019"];
+
+					function available(date) {
+					dmy = date.getDate() + "-" + (date.getMonth()+1) + "-" + date.getFullYear();
+					if ($.inArray(dmy, availableDates) != -1) {
+						return [true, "activedate","Book Now"];
+					} else {
+						return [false,"","unAvailable"];
+					}
+					}
+					$(document).ready(function(){;
+						$('#bookingdate').datepicker({
+						dateFormat: 'dd-mm-yy',
+						beforeShowDay: available,
+						inline: true,
+						minDate:5;
+						
+
+						});
+						
+					})
+				
+				
+				</script>
+					
+			</div>
+		</div>
+	</div>
+
+	</div>
+{% endblock %}
+	

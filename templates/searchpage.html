@@ -1,0 +1,492 @@
+{% load static %}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+<title>{{pagetitle}}</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'>
+<link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP&display=swap" rel="stylesheet">
+<link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css' integrity='sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ' crossorigin='anonymous'>
+<script src='{% static "js/plug.js" %}'></script>
+<link rel="stylesheet" href="{% static 'cs/jcs.css' %}" type="text/css"/>
+
+<style>
+.colbtn0-:after {
+    content: "+";
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 2px;
+}
+a#sfilt {
+    padding: 2px 14px 4px 0;
+    text-decoration: none;
+    color: #000000;
+    font-size: 13px;
+    position: relative;
+}
+a#sfilt:hover {
+    text-decoration: underline;
+    color: blue;
+}
+.colbtn0{position:relative}
+button.button-in, .form-ip {
+    padding: 5px 8px;
+}
+.inptrace {
+    border-radius: 6px;
+    overflow: hidden;
+    display: table;
+    margin: 10px auto;
+}
+button.button-in {
+    color: white;
+    background: #7a90a1;
+}
+.form-ip {
+    width: 160px;
+}
+.form-ip,.button,.button-in{
+	font-size:16px;
+}
+.templocheck {
+    display: block;
+    margin: 0 10px 0 0;
+    cursor: pointer;
+    border: 1px solid #222;
+    border-radius: 3px;
+    color: #222;
+    width: 16px;
+    height: 16px;
+    line-height: 1;
+    float: left;
+	background: white
+}
+.dis1 {
+    display: inline-block;
+}
+.cview {
+    margin: 14px 0;
+}
+.tropl {
+    margin: 2px 0;
+    font-size: 90%;
+}
+label.flabl {
+    font-weight: bold;
+}
+.rfpanel.hide{display:none;}
+@media(min-width:1000px){
+	.rfpanel.hide{display:block;}
+}
+.loader {
+  margin:auto;
+  border: 3px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 3px solid #3498db;
+  width: 20px;
+  height: 20px;
+  -webkit-animation: spin 2s linear infinite; /* Safari */
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+</style>
+</head>
+<body class="defaulthome">
+
+<div class='jbd bdy'>
+	
+	{%  include 'navbar.html'%}
+
+	<!-- home search panel -->
+	<div class="seearchpanel">
+	
+	<div class="sbdy">
+		
+		<div class="vbdy">
+		
+		<div class="tbl-">	
+		
+			<div class='header'>
+			
+				<div class="logoplacer">
+					<div class="logop">Search Your Holidays</div>
+				</div>
+				
+				
+				<form class="superform sprbdy-" method="GET" action="{% url 'search' %}">
+					
+					<div class="sst">
+					
+									<div class="interIP">
+										<input name="k" type="text" class="textip" placeholder="Search your trip..." value="{{key}}" required />
+									</div>
+								
+									<div class="interBTN">
+										<div class="holderbtn">
+											<button type="submit" class="textsub"><i class="fas fa-search"></i></button>
+										</div>	
+									</div>
+					
+					</div>
+					
+				</form>	
+					
+				
+				<div class="mx-w-sc">
+					<div class="clear __panel__">
+						<div class="_col- ripin">
+							<div class="refinerX ">
+								<div id='rfine12' class="colbtn0">
+								<span class="filt-svg"></span><a href="javascript:void(0)" id="sfilt" class="colbtn0-">Filters </a>
+								</div>
+								
+								<div class="rfpanel hide">	
+								
+									<div class="fil-body">
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									<!-- filter -->
+									
+									<div class="boxed">
+										<div class="til">
+											<label class="flabl">Days</label>
+											<div class="cview">
+												
+												<div class="tropl all daycheck">
+													<div class="dis1">
+														<input data-n="0" data-x="100" type="checkbox" class="templocheck daycheck" checked> 
+													</div>
+													<div class="dis1">
+														<span class="staer"> All</span>
+													</div>
+												</div>
+											
+												<div class="tropl">
+													<div class="dis1">
+														<input data-n="2" data-x="4"  type="checkbox" class="templocheck daycheck" checked> 
+													</div>
+													<div class="dis1">
+														<span class="staer"> 2 to 4 days</span>
+													</div>
+												</div>
+												
+												<div class="tropl">
+													<div class="dis1">
+														<input data-n="4" data-x="6"  type="checkbox" class="templocheck daycheck" checked> 
+													</div>
+													<div class="dis1">
+														<span class="staer">4 to 6 days</span>
+													</div>
+												</div>
+												<div class="tropl">
+													<div class="dis1">
+														<input data-n="6" data-x="8"  type="checkbox" class="templocheck daycheck" checked> 
+													</div>
+													<div class="dis1">
+														<span class="staer">6 to 8 days</span>
+													</div>
+												</div>
+												<div class="tropl">
+													<div class="dis1">
+														<input data-n="8" data-x="100"  type="checkbox" class="templocheck daycheck" checked> 
+													</div>
+													<div class="dis1">
+														<span class="staer">8+</span>
+													</div>
+												</div>
+											</div>
+											
+											
+										</div>
+										<div class="til">
+											<label class="flabl">Price</label>
+											<div class="cview">
+												<div class="tropl all paycheck">
+													<div class="dis1">
+														<input id="2-4" data-n="500" data-x="500000" type="checkbox" class="templocheck paycheck enabled" checked> 
+													</div>
+													<div class="dis1">
+														<span class="staer">
+															<i class="fas fa-rupee-sign"></i> <span class="costval">All</span>
+														</span>
+													</div>
+												</div>
+												<div class="tropl">
+													<div class="dis1">
+														<input id="2-4" data-n="500" data-x="2000" type="checkbox" class="templocheck paycheck enabled" checked> 
+													</div>
+													<div class="dis1">
+														<span class="staer">
+															<i class="fas fa-rupee-sign"></i> <span class="costval">500</span> -
+															<i class="fas fa-rupee-sign"></i> <span class="costval">2000</span>
+														</span>
+													</div>
+												</div>
+												
+												<div class="tropl">
+													<div class="dis1">
+														<input id="4-6" data-n="2000" data-x="8000" type="checkbox" class="templocheck paycheck enabled" checked> 
+													</div>
+													<div class="dis1">
+														<span class="staer">
+															<i class="fas fa-rupee-sign"></i> <span class="costval">2000</span> -
+															<i class="fas fa-rupee-sign"></i> <span class="costval">8000</span>
+														</span>
+													</div>
+												</div>
+												<div class="tropl">
+													<div class="dis1">
+														<input id="4-6" data-n="8000" data-x="16000" type="checkbox" class="templocheck paycheck enabled" checked> 
+													</div>
+													<div class="dis1">
+														<span class="staer">
+															<i class="fas fa-rupee-sign"></i> <span class="costval">8000</span> -
+															<i class="fas fa-rupee-sign"></i> <span class="costval">16000</span>
+														</span>
+													</div>
+												</div>
+												<div class="tropl">
+													<div class="dis1">
+														<input id="4-6" data-n="16000" data-x="30000" type="checkbox" class="templocheck paycheck enabled" checked> 
+													</div>
+													<div class="dis1">
+														<span class="staer">
+															<i class="fas fa-rupee-sign"></i> <span class="costval">16000</span> -
+															<i class="fas fa-rupee-sign"></i> <span class="costval">30000</span>
+														</span>
+													</div>
+												</div>
+												<div class="tropl">
+													<div class="dis1">
+														<input id="4-6" data-n="30000" data-x="50000" type="checkbox" class="templocheck paycheck enabled" checked> 
+													</div>
+													<div class="dis1">
+														<span class="staer">
+															<i class="fas fa-rupee-sign"></i> <span class="costval">30000</span> -
+															<i class="fas fa-rupee-sign"></i> <span class="costval">50000</span>
+														</span>
+													</div>
+												</div>
+												<div class="tropl">
+													<div class="dis1">
+														<input id="4-6" data-n="50000" data-x="500000" type="checkbox" class="templocheck paycheck enabled" checked> 
+													</div>
+													<div class="dis1">
+														<span class="staer">
+															<i class="fas fa-rupee-sign"></i> <span class="costval">50000+</span> 
+														</span>
+													</div>
+												</div>
+											</div>
+											<div class="inptrace" style="display:none">
+												<input id="price_ref" type="text" value="0" name="val" class="form-control inp-t">
+											</div>
+										</div>
+
+									</div>
+									
+									<!-- filter -->
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									</div>
+								
+								</div>
+							</div>
+						</div>
+						<div class="_col- pins searchpins sprbdy-">
+							<div class="">
+								
+								<div class="advslabl colbtn0">
+								
+								<span class="advslabl"><strong id="tolt">{{prod|length}}</strong></span> 
+								<span>results found for </span> <span><b><u style="color:orange">{{key}}</u></b></span>
+								
+								
+								</div>
+								<div class="ab0 clear srt-cont">
+									
+									<div class="rflot">
+										<div class="dplin">Order by:</div>
+										<div class="dplin">
+											<select class="sel-sor" name='sort'>
+												<option>Most Relevent</option>
+												<option>Price</option>
+											</select>
+										</div>
+										<div class="dplin">
+											<button class="sel-sor" title="Change order" style="cursor:pointer">
+											<span id="downpan" class=""><i class='fas fa-sort-amount-up'></i></span>
+											<span id="uppan" class="shono"><i class='fas fa-sort-amount-down'></i></span>
+											</button>
+										</div>
+									</div>
+									
+								</div>
+								<div class="_resul__">
+									
+								</div>
+								<div class="result__">
+									{% for e in prod %}
+										{%  include 'includes/pin.html'%}
+									{% endfor %}
+									
+									{% if prod.count == 0 %}
+										<center style="margin-top:40px"><b>Oops!</b> Nothing found for <b><u style="color:orange">{{key}}</u></b>. Try something else.</center>
+									{% endif %}
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		
+		
+		</div>
+		
+		
+		</div>
+		<!-- widget padder -->
+	
+		<div class="widgetpadder"></div>
+	
+	<!-- widget padder -->
+	</div>
+	
+	
+	
+	</div>
+	<!-- home search panel -->
+	
+	{%  include 'includes/footer.html'%}
+	
+	
+</div>
+
+<script>
+
+
+	$("#sfilt").click(function(){
+		if($(".rfpanel").hasClass("hide")){$(".rfpanel").removeClass("hide")}
+		else{$(".rfpanel").addClass("hide")}
+		
+	});
+	
+
+    
+	 $("input[id='price_ref']").TouchSpin({
+        min: 1000,
+        max: 100000,
+        stepinterval: 500,
+        maxboostedstep: 10000000,
+    });
+	$("input[type=checkbox]").change(function(){
+			
+			aply()
+			
+			});
+	function aply(){
+		
+		$("a.pin").hide()
+		$("._resul__").html('<div class="loader"></div>');
+		setTimeout(function(){
+		$("a.pin").each(function(){
+			pin = $(this);
+			dd=parseInt($(this).data("day"));
+			dp=parseInt($(this).data("cost"));
+			
+			
+			
+					
+					$("input.daycheck").each(function(){
+						
+						
+							if($(this).prop('checked')==true){
+								dn=parseInt($(this).data("n"));
+								dx=parseInt($(this).data("x"));
+								
+								if((dn<=dd) && (dx>=dd)){
+								
+									// passed through daycheck then check for prize
+									
+									$("input.paycheck.enabled").each(function(){
+										if($(this).prop('checked')==true){
+											pn=parseInt($(this).data("n"))
+											px=parseInt($(this).data("x"))
+											
+											if((pn<=dp) && (px>=dp)){
+												pin.show();
+												return false;
+											}
+										}
+									})
+									return false;
+									
+									
+									
+								}
+								
+								
+							}
+						
+						
+					});
+					
+					
+					found=$("a.pin:visible").length
+					if(found==0)$("._resul__").html('Snap! No package available...');
+					else $("._resul__").html('');
+					
+					$("#tolt").html(found);
+					
+			
+		
+		})
+		},500);
+	}
+	
+	
+
+</script>
+
+<div class="wig">
+
+{% include 'includes/loginpopup.html' %}
+
+</div>
+<div class="scri">
+	<script src="{% static 'js/jsript.js' %}"></script>
+</div>
+
+
+</body>
+</html>

@@ -1,0 +1,116 @@
+
+
+{% extends 'base.html' %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% block content %}
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+	
+	<div class="cityblock">
+	<div class="pagesector">
+	
+		{%  include 'includes/city_header.html'%}
+		
+		<div class="section content_explore">
+		
+			<div class="lblh tcent">
+				
+			</div>
+			<div class="cintro secpanner">
+				<div class="city-name heading">{{ city.city_name|title }}</div>
+				<div class="liner"></div>
+				<div class="postre">
+					<div class="p">
+						{{ city.intro }}
+					</div class="p">
+					<div class="p">
+						{{ city.things_to_do }}
+					</div>
+				</div>
+			</div>
+		
+		</div>
+		<div class="sepra"></div>
+		<div class="section secpanner content_explore custProf">
+			<div class="thumbpinsec">
+				<div class="thumbcol">
+					<div class="thumb-tec">
+						<div class="taginge"><h3>Attractions in {{city.city_name|title}} ({{ activity|length }})</h3></div>
+						<div class="thumblist">
+							
+							{% for e in activity %}
+								{%  include 'includes/nofoldactivity.html'%}
+							{% endfor %}
+						</div>
+					</div>
+				</div>	
+			</div>
+		</div>
+		
+		<div class="secpanner prodpinlist">
+			<div class="prodplacer postre">
+				
+				<div class="taginge"><h3>Tours in {{city.city_name|title}}</h3></div>
+				<div class="pin_bg">
+				{% for e in prod %}
+					{%  include 'includes/nofoldpin.html'%}
+				{% endfor %}
+				</div>
+				
+				<div class="qcklnks">
+					<div class="advs ">
+						<div class="advslabl">Quick links</div>
+						<div class="plist qlinks">
+							{% for q in qlinks %}
+								<a class='quicklinks' href="{{ q.link_src }}"><div class="items" title="{{ q.link_name }}">{{ q.link_name }}</div></a>
+							{% endfor %}
+						</div>
+					</div>
+				</div>
+				
+			
+			
+			</div>
+		</div>
+		
+		<div class="wig">
+			{%  include 'includes/enqform.html'%}
+		</div>
+	
+	</div>
+	
+		
+	
+	</div>
+	
+	
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+{% endblock %}

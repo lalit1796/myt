@@ -1,0 +1,713 @@
+{% extends 'base.html' %}
+
+
+
+
+
+
+
+
+{% load static %}
+
+{% block css %}
+
+<style>
+.navigation{
+	background:#70b0f8
+}
+a.ui-state-default:after {
+    content: "₹ {{prod.printcost}} (2pax)";
+    display: block;
+	color:red;
+	font-size:10px;
+}
+
+.navigation,.abbi-sw {
+   
+}
+div#ui-datepicker-div {
+    position: fixed !important;
+    top: 74px !important;
+    width: auto;
+    min-width: 320px;
+    left: 2% !important;
+    right: 2% !important;
+    z-index: 100 !important;
+    max-width: 900px;
+    box-shadow: 0 0 5px #726e6e;
+}
+
+.none {
+    height: 0;
+    overflow: hidden;
+}
+.desk-mid{
+	display:none;
+	}
+a.bdv- {
+    color: white;
+    width: 100%;
+    display: block;
+}
+.cal-hed {
+    width: 50%;
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+}
+.booking-cal {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    left: 0;
+    right: 0;
+    display: table;
+    background: #deecf2;
+    padding: 6px;
+    box-shadow: 0 0 3px #838080;
+    z-index: 18;
+}
+.spann {
+    display: table;
+    margin: auto;
+}
+.image-p-f, .img-p-f, .bontu {
+		width: 100%;
+	}
+	
+.roll-btn {
+    font-size: 11px;
+    line-height: 1.33;
+}
+.footer{display:none;}	
+@media(min-width:717px){
+	.footer{display:block !important}
+	.image-p-f, .img-p-f, .bontu {
+		width: 700px;
+	}
+	div#ui-datepicker-div {
+    position: fixed !important;
+    top: 74px !important;
+    width: 70%;
+    min-width: 320px;
+    left: 15% !important;
+    z-index: 100 !important;
+    max-width: 900px;
+    right: 15%;
+	box-shadow: 0 0 5px #726e6e;
+}
+.roll-btn {
+    font-size: 14px;
+    line-height: unset;
+}
+}	
+@media(min-width:1020px){
+.flt-p {
+    float: left;
+    box-sizing: border-box;
+    margin: auto;
+}
+.cell{
+	padding:0 2px;
+}
+.desk-mid{
+	display:block
+	}
+.booking-cal {
+    background: white;
+    position: relative;
+   
+    width: 100%;
+    
+    display: table;
+   
+    padding: 6px;
+    box-shadow: unset;
+    z-index: 0;
+}	
+	
+}
+</style>
+
+{% endblock %}
+
+
+{% block content %}
+
+
+	<div class="pagesector">
+	
+		
+		
+		<div class="section _pck content_package">
+			
+			
+				<div class="package-header nav-esc">
+				
+					<div class="p-max-w">
+						<div class="p-padd">
+							<div class="p-title">
+								{{prod.package_title|title}}
+							</div>
+							
+							<div class="p-features kshn">
+								<div class="p-f-dur">
+									
+									<span class="p-f p-f-d ico-it- ico-sun-">7D</span>
+									<span>/</span>
+									<span class="p-f p-f-n ico-it- ico-moon-">6N</span>
+									<span class="p-f p-f-c">Mumbai-Manali-Delhi</span>
+								</div>
+							</div>
+							
+							<div class="mappr">
+								<a href="#" class="_dflnk">Home</a> > 
+								<a href="#" class="_dflnk">Packages</a> > 
+								<a href="#" class="_dflnk">{{prod.package_title|title}}</a>
+							</div>
+						</div>
+					</div>
+					
+				
+				</div>
+				<div class="p-max-w">
+					
+						
+						<div class="p-head-">
+							<div class="slab clear">
+								<div class="image-p-f flt-p">
+									
+									<div id='feurate' class="featured-slider h100">
+										<div class="slider-noescape h100">
+											<ul class="nolist relative h100 _crul_">
+												<li class="slider-item selected">
+													<div class="img-regrestion">
+														<img class="timber img-item image-p-f" src="{{ prod.featured_img_1.url }}"/>
+														<div class="fetue-txt">
+															<div class="ftu-con">{{prod.featured_title_1}}</div>
+														</div>
+													</div>
+												</li>
+												<li class="slider-item next">
+													<div class="img-regrestion">
+														<img class="timber img-item image-p-f" src="{{ prod.featured_img_2.url }}"/>
+														<div class="fetue-txt">
+															<div class="ftu-con">{{prod.featured_title_2}}</div>
+														</div>
+													</div>
+												</li>
+												<li class="slider-item">
+													<div class="img-regrestion">
+														<img class="timber img-item image-p-f" src="{{ prod.featured_img_3.url }}"/>
+														<div class="fetue-txt">
+															<div class="ftu-con">{{prod.featured_title_3}}</div>
+														</div>
+													</div>
+												</li>
+												<li class="slider-item">
+													<div class="img-regrestion">
+														<img class="timber img-item image-p-f" src="{{ prod.featured_img_4.url }}"/>
+														<div class="fetue-txt">
+															<div class="ftu-con">{{prod.featured_title_4}}</div>
+														</div>
+													</div>
+												</li>
+
+												<li class="slider-item prev">
+													<div class="img-regrestion">
+														<img class="timber img-item image-p-f" src="{{ prod.featured_img_5.url }}"/>
+														<div class="fetue-txt">
+															<div class="ftu-con">{{prod.featured_title_5}}</div>
+														</div>
+													</div>
+												</li>
+
+											</ul>
+											<div class="buttons-slid">
+											<div id="btn-p" class="prev-btn slbtn"><i class='fas fa-arrow-left'></i></div>
+											<div id="btn-n" class="next-btn slbtn"><i class='fas fa-arrow-right'></i></div>
+											</div>
+										</div>
+									</div>
+									
+									
+
+								</div>
+								<div class="btn-p-f flt-p wite desk-mid">
+									<div class="boxed-in gbjp">
+										<div class="lbdiv">
+											<div class="upzcd tble">
+												<div class="block">
+													<span class="ppfgi sthru block">
+														<i class="fas fa-rupee-sign"></i> <span>{{prod.generalprize_per_adult}}</span>
+													</span>
+												</div>
+												<div class="block">
+													<div class="cell">
+														
+														<span class="ppfgh block">
+															<i class="fas fa-rupee-sign"></i> <span>{{prod.printcost}}</span>
+														</span>
+													</div>
+													<div class="cell">
+														<div class="pprs">per person (2pax)</div>
+														<div class="offon">
+															<span class="rate-d">{{prod.discount_pax2}}% off</span>
+														</div>
+													</div>
+												</div>
+												<div class="ioit">
+													- Taxes are not included in this price.
+												</div>
+												<div class="ioit">
+													- More discounts available.
+												</div>
+											</div>
+										</div>
+										<div class="lbdiv fwit">
+											<a href="javascript:void(0)" class="_dflnk bookbtn bdv bdpddr cent fwit modal-calendarBooking" title="Book Online">Book Online</a>
+										</div>
+										<div class="lbdiv fwit">
+											<a  href="{% url 'package_profile' slug=prod.url_title %}" data-p="Package" data-id="{{prod.id}}" rel="nofollow" title="Send query for this package." class="qrybtn bdv bdpddr cent _dflnk" >Send Query</a>
+										</div>
+										<div class="lbdiv f-git">
+											<span class="label-cont">
+												<b>Have doubts?</b><br><hr/>
+												<i>Contact our experts for all your answers.</i><br>
+												<b>9899889574</b><br>
+												<b>9567821348</b>
+											</span>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						
+						
+						<div class="none">
+							<form action="{% url 'package_booking_profile' slug=prod.uid %}" method="GET">
+								
+								<input type="text" name="date" id="bookingdate" readonly="readonly" />
+								
+							</form>	
+						</div>
+						<div class="clear p-bod">
+							<div class="bontu flt-p">
+								{% if prod.intro %} 
+									<div class="p-block">
+										
+										<div class="c-container x-container">
+											<div class="qt">{{ prod.intro|linebreaksbr }}</div>
+										</div>
+										<div class="shomo clear">
+											<div class="rooter"><i class='fas fa-ellipsis-v'></i></div>
+											<div class="shomobtn">Expand</div>
+										</div>
+									</div>
+									
+								{% endif %}
+								
+								{% if prod.insight %} 
+									<div class="c-block">
+										<div class="c-heading">Overview</div>
+										<div class="c-container x-container">
+											<div class="qt">{{ prod.insight }}</div>
+										</div>
+										<div class="shomo clear">
+											<div class="rooter"><i class='fas fa-ellipsis-v'></i></div>
+											<div class="shomobtn">Expand</div>
+										</div>
+									</div>
+									
+								{% endif %}
+								
+								{% if True %} 
+									<div class="c-block">
+										<div class="c-heading">Daywise Itinerary</div>
+										<div class="c-container">
+											<div class="x-container i-container mini">
+												<div class="ilist">
+													<div class="iti-head iti-">
+														<div class="abdaycnt">
+															Day 1
+														</div>
+														<div class="it-head">
+															{{itin.head_1}}
+														</div>
+													</div>
+													<div class="iti-desc iti-">
+														<div class="it-para ">{{itin.desc_1|linebreaks}}</div>
+													</div>
+												</div>
+												<div class="ilist">
+													<div class="iti-head iti-">
+														<div class="abdaycnt">
+															Day 2
+														</div>
+														<div class="it-head">
+															{{itin.head_2}}
+														</div>
+													</div>
+													<div class="iti-desc iti-">
+														<div class="it-para ">{{itin.desc_2|linebreaks}}</div>
+													</div>
+												</div>
+												<div class="ilist">
+													<div class="iti-head iti-">
+														<div class="abdaycnt">
+															Day 3
+														</div>
+														<div class="it-head">
+															{{itin.head_2}}
+														</div>
+													</div>
+													<div class="iti-desc iti-">
+														<div class="it-para ">{{itin.desc_2|linebreaks}}</div>
+													</div>
+												</div>
+												<div class="ilist">
+													<div class="iti-head iti-">
+														<div class="abdaycnt">
+															Day 4
+														</div>
+														<div class="it-head">
+															{{itin.head_2}}
+														</div>
+													</div>
+													<div class="iti-desc iti-">
+														<div class="it-para ">{{itin.desc_2|linebreaks}}</div>
+													</div>
+												</div>
+											
+											</div>
+											<div class="shomo clear">
+												<div class="rooter"><i class='fas fa-ellipsis-v'></i></div>
+												<div class="shomobtn">Expand</div>
+											</div>
+										</div>
+									</div>
+									
+								{% endif %}
+								
+								{% if prod.highlight %} 
+									<div class="c-block">
+										<div class="c-heading">Highlights</div>
+										<div class="c-container x-container mini">{{ prod.highlight|linebreaks }}</div>
+										<div class="shomo clear">
+											<div class="rooter"><i class='fas fa-ellipsis-v'></i></div>
+											<div class="shomobtn">Expand</div>
+										</div>
+									</div>
+									
+								{% endif %}
+								
+								{% if prod.inclusion %} 
+									<div class="c-block">
+										<div class="c-heading">Inclusion</div>
+										<div class="c-container x-container mini">{{ prod.inclusion|linebreaks }}</div>
+										<div class="shomo clear">
+											<div class="rooter"><i class='fas fa-ellipsis-v'></i></div>
+											<div class="shomobtn">Expand</div>
+										</div>
+									</div>
+									
+								{% endif %}
+								
+									
+								
+								{% if prod.exclusion %} 
+									<div class="c-block">
+										<div class="c-heading">Exclusion</div>
+										<div class="c-container x-container mini">{{ prod.exclusion|linebreaks }}</div>
+										<div class="shomo clear">
+											<div class="rooter"><i class='fas fa-ellipsis-v'></i></div>
+											<div class="shomobtn">Expand</div>
+										</div>
+									</div>
+									
+								{% endif %}
+									
+									<div class="booking-cal clear">
+										<div class="cal-hed c-heading">
+											<div class="roll-btn">
+												<div class="spann">
+													<span class="block">
+														<b><i class="fas fa-rupee-sign"></i> <span>{{prod.printcost}}</span></b>
+													</span>
+												</div>
+												<div class="spann">
+													<div class="cell">
+														
+														<span class="block ppfgi sthru">
+															<i class="fas fa-rupee-sign"></i> <span>{{prod.generalprize_per_adult}}</span>
+														</span>
+													</div>
+													<div class="cell">
+														<div class="pprs">per person (2pax)</div>
+														<div class="offon">
+															<span class="rate-d">{{prod.discount_pax2}}% off</span>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="cal-hed c-heading">
+											<div class="roll-btn">
+												<a href="javascript:void(0)" class="_dflnk bookbtn bdv- bdpddr cent fwit modal-calendarBooking" title="Book Online">Book Online </a>
+											</div>
+										</div>
+										<div class="cont-booking calendarBooking">
+											
+										</div>
+										
+									</div>
+									<div class="sepra"></div>	
+										
+									<style>
+						
+									</style>		
+									<div class="p-block">
+										<div class="c-banner">
+											<img class="timber-banner" src="{% static 'graphi/enqiurenow.png' %}" />
+										</div>
+										<div class="c-heading" style="display:none">Got any confusion! Enquire Now.</div>
+										<div class="tuplop-label cotn exp">
+											<div class="cotn exp"><center>Talk to Expert - 9873780261</span></center></div>
+										</div>
+										<div class="c-container x-container mini">
+											<div class="cotn ora"><center><b>-Or-</b></center></div>
+										</div>
+										<div>
+											<ol class="info-list">
+												<li>If you have any doubt about the itinerary, stay, iclusion, exclusion.</li>
+												<li>If you are in a large group and require to budget your trip.</li>
+												<li>If you want to travel according to your likely date.</li>
+												<li>If you want a customized itinerary.</li>
+											<ol>
+										</div>
+										
+										<div class="c-container x-container mini">
+											
+											<form class="enq-form-inbi clear" method="POST" action="{% url 'enquiry' %}">
+												<div>
+														{% csrf_token %}
+												<input type="hidden" value="Package" name="prod">
+												<input type="hidden" value="{{prod.id}}" name="id">
+												<input type="hidden" value="{% url 'package_profile' slug=prod.url_title %}" name="url">
+												</div>
+												<p>
+													<label><b>Your Full Name</b></label><br/>
+													<input name="first-name" required type="text" placeholder="Full Name" class="inp-t-enq"/>
+												</p>
+												<p>
+													<label><b>Your Mobile</b></label><br/>
+													<input name="phone" required type="text" placeholder="Mobile" class="inp-t-enq"/>
+												</p>
+												<p>
+													<label>Your Email</label><br/>
+													<input name="email" required type="email" placeholder="Email" class="inp-t-enq"/>
+												</p>
+												<p>
+													<label><b>Preffered date</b></label><br/>
+													<input name="date" required type="date" class="inp-t-enq"/>
+												</p>
+												<p>
+													<label><b>Adults</b></label><br/>
+													<input name="adults" required type="number" value=1 class="inp-t-enq"/>
+												</p>
+												<p>
+													<label><b>Children</b></label><br/>
+													<input name="children" required type="number" value=0 class="inp-t-enq"/>
+												</p>
+												<p>
+													<label><b>Message</b></label><br/>
+													<textarea name="message" required class="txt-ar-t-enq"></textarea>
+												</p>
+												
+												<p style="width:95%" style="clear">
+													
+													<button class="oto-go" type="submit">Submit</button><br/>
+													<span class="act-msg-t">By submiting this, I allow myTrip to contact me for the above request.</span>
+												</p>
+											</form>
+											<div class="act-msg">
+												<span>We do not share your info.</span>
+											</div>
+										
+										</div>
+										
+									</div>
+									<div class="tagbod">
+										<div class="taginp">
+											{{ prod.tags|linebreaks }}
+										</div>
+									</div>
+									
+							</div>
+							<div class="ctn-p-f flt-p desk-mid" style="min-height:400px">
+								
+									
+									<div id="booking_calender" class="bkcldr">
+									
+									<div class="container">
+										<div class="d-block">
+											<span class="whs kshn">Why choose us?</span>
+										</div>
+										<div class="d-block">
+											<div class="d-head kshn">Expertise</div>
+											<div class="d-cont">
+												<text>
+												An upmarket 5-star property down South on the quieter part of the island where it is less commercialized and scenically stunning! This hotel has some of the longest widest beaches on the island and with a back drop of La Morne mountain you are in for a treat!
+												</text>
+											</div>
+										</div>
+										<div class="d-block">
+											<div class="d-head kshn">Transparency</div>
+											<div class="d-cont">
+												<text>
+												An upmarket 5-star property down South on the quieter part of the island where it is less commercialized and scenically stunning! This hotel has some of the longest widest beaches on the island and with a back drop of La Morne mountain you are in for a treat!
+												</text>
+											</div>
+										</div>
+										<div class="d-block">
+											<div class="d-head kshn">Human Touch</div>
+											<div class="d-cont">
+												<text>
+												An upmarket 5-star property down South on the quieter part of the island where it is less commercialized and scenically stunning! This hotel has some of the longest widest beaches on the island and with a back drop of La Morne mountain you are in for a treat!
+												</text>
+											</div>
+										</div>
+										<div class="d-d-block"></div>
+										<div class="d-block">
+											<div class="f-block">
+												<div class="f-ollow d-head kshn">Find us</div>
+												<div class="f-btns clear">
+													<a href="" class="fbtn" title="Facebook Page">
+														<i class='fbk-m fic- fab fa-facebook-f'></i>
+													</a>
+													<a href="" class="fbtn" title="Twiiter Account">
+														<i class="twt-m fic- fab fa-twitter"></i>
+													</a>
+													<a href="" class="fbtn" title="Youtube Channel">
+														<i class="wsa-m fic- fab fa-youtube"></i>
+													</a>
+
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="temp"></div>
+									
+									</div>
+									
+									
+									
+								
+								
+							</div>
+						</div>
+						
+					
+				</div>
+			
+			</div>
+			<div class="t-sector">
+				<div class="hr bgwit"></div>
+				<div class="secpanner">
+					<div class="section _pck  cust-pk">
+						
+					</div>
+					<div>
+						<span class="p-head">Similar Packages | </span>
+						<a class="gothrulink" href="{% url 'package_all' %}">
+							<span>See all packages available </span>
+							<span class="gorow"></span>
+						</a>
+					</div>
+					<div class="pin_bg">
+						{% if prods.count > 0 %}
+						
+						{% for e in prods %}
+							{%  include 'includes/nofoldpin.html'%}
+						{% endfor %}
+						
+						{% else %}
+						<div class="NF">
+						<span>Snap! Can't find similar to this.</span>
+						<a class="gothrulink" href="{% url 'package_all' %}">
+							<span>Click to other packages.</span>
+						</a>
+						</div>
+						
+						{% endif %}
+						
+					</div>
+					
+					<div class="prodpinlist">
+						
+						<div class="">
+							<div class="advs ">
+								<div class="advslabl">Quick links</div>
+								<div class="plist qlinks">
+									{% for q in qlinks %}
+										{% include 'includes/qlinks.html' %}
+									{% endfor %}
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div style="padding:30px 0"></div>
+			</div>
+			<div class="cal-form">
+			
+				<div>
+					
+					<script>
+												
+					var availableDates = ["16-9-2019"];
+
+					function available(date) {
+					dmy = date.getDate() + "-" + (date.getMonth()+1) + "-" + date.getFullYear();
+					if ($.inArray(dmy, availableDates) != -1) {
+						return [true, "activedate","Book Now"];
+					} else {
+						return [false,"","unAvailable"];
+					}
+					}
+					$(document).ready(function(){;
+						$('#bookingdate').datepicker({
+						dateFormat: 'dd-mm-yy',
+						beforeShowDay: available,
+						inline: true
+						
+
+						});
+						$('.modal-calendarBooking').click(function(){
+							$('#bookingdate').trigger("focus")
+							.change(function () {
+								console.log(this.form)	;
+								this.form.submit();
+							});
+						})
+					})
+					</script>
+				</div>
+
+			
+			</div>
+			<div class="wig">
+				{%  include 'includes/enqform.html'%}
+			</div>
+		
+		</div>
+	
+	
+	</div>
+	
+ 
+ 
+ 
+ 
+ 
+{% endblock %}

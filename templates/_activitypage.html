@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+
+{% block css %}
+
+<style>
+.navigation {
+    background: #E91E63;
+    color: white;
+}
+</style>
+
+{% endblock %}
+
+
+{% block content %}
+	<div class="activitypanel">
+
+		<div class="section secpanner content_explore custProf">
+			<div class="thumbpinsec">
+				<div class="thumbcol">
+					<div class="thumb-tec">
+						<div class="advslabl">
+							<span>Thrilling Activities</span> 
+						</div>
+						<div class="thumblist">
+							
+							{% for e in activities %}
+								{%  include 'includes/act.html'%}
+							{% endfor %}
+							
+						</div>
+					</div>
+				</div>	
+			</div>
+		</div>
+		
+		<div class="thumbpinsec">
+			<div class="advs ">
+				<div class="advslabl">Quick links</div>
+				<div class="plist qlinks">
+					{% for q in qlinks %}
+						<a class='quicklinks' href="{{ q.link_src }}"><div class="items" title="{{ q.link_name }}">{{ q.link_name }}</div></a>
+					{% endfor %}
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+{% endblock %}
+	

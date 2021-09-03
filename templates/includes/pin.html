@@ -1,0 +1,52 @@
+				
+				{% if e.ref_service_code == "pac" %}
+				<a data-cost="{{ e.price }}" data-day="{{e.service_time}}" href="{% url 'package_profile' slug=e.url %}" class="pin homepin">
+				{% else %}
+				<a data-cost="{{ e.price }}" data-day="0" href="{% url 'activity_profile_content' name=e.path1 loc=e.url %}" class="pin homepin">
+				{% endif %}
+					<div class="upcrate">
+						<div class="upcaretlabel">
+						{% if e.make_exclusive %}
+							<div class="upcaretlabel-" style="background: #03A9F4;border-color: #03A9F4">Exclusive</div>
+						{% endif %}
+						{% if e.make_indemand %}
+							<div class="upcaretlabel-" style="background: #faa70e;border-color: #faa70e">In Demand</div>
+						{% endif %}
+						{% if e.make_limitedoffer %}
+							<div class="upcaretlabel-" style="background: #a31b8a;border-color: #a31b8a">Limited Offer</div>
+						{% endif %}
+						{% if e.make_inbudget %}
+							<div class="upcaretlabel-" style="background: #FF5722;border-color: #FF5722">In Budget</div>
+						{% endif %}
+						</div>
+						<div class="upblock">
+							<img src="{{ e.thumb.url }}" class="w100 h100 abs"/>
+						</div>
+						<div class="dwnblock">
+							<div class="tinfo graphop">
+								<div class="grhead">
+								<span>{{ e.title|title }}</span>
+								{% if e.ref_service_code == "act" %}
+								<span class="til-act">Activity</span>
+								{% endif %}
+								</div>
+								<div class="grcontent">{{e.description|truncatechars:200 }}</div>
+							</div>
+						</div>
+					</div>
+					<div class="tblock">
+						<div class="ramping">
+							<div class="cnt ingn">
+							<div class='tlt'><i class='fas fa-rupee-sign'></i> <span>{{ e.price }}</span></div>
+							<div class="pper"><span>per person</span></div>
+							</div>
+							{% if e.ref_service_code == "pac" %}
+							<div class="dnt ingn">{{e.service_time}}D.{{e.service_time|add:"-1"}}N</div>
+							{% elif e.ref_service_code == "act" %}
+							<div class="dnt ingn">{{e.service_time}}</div>
+							{% endif %}
+							
+						</div>
+					</div>
+				
+				</a>

@@ -1,0 +1,177 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+	<style>
+	.actpage {
+    min-height: 600px;
+    background: white;
+}
+.content {
+    margin: 50px 0;
+}
+
+input#myInput {
+    padding: 4px 8px;
+    border: solid 1px #2196F3;
+    border-radius: 500px;
+    float: right;
+    background: #e3f2ef;
+    font-size: 108%;
+}
+table.aTable>tbody>tr>td {
+    border: solid 1px orange;
+    padding: 6px;
+    font-size: 85%;
+    color: #d63e0d;
+	    background: #fcffef;
+}
+th {
+    text-align: left;
+    padding: 10px 0;
+    font-size: 120%;
+}
+table.aTable{
+	
+	margin: 10px 0;
+	border-collapse: collapse;
+	width: 99.9%;
+}
+.btn-book {
+    font-weight: bold;
+    color: #268fe2;
+}
+.btn-book:hover {
+    text-decoration: underline;
+}
+span#ffr {
+    font-weight: bold;
+    color: #e08f09;
+    text-decoration: underline;
+}
+	</style>
+	
+
+	<div class="actpage">
+	
+	
+	
+	
+	
+	
+		<div class="p-max-w">
+			<div class="imgegrph">
+				<img src="{{ activity.banner.url }}" class="w100"/>
+			</div>
+		</div>
+		<div class="p-max-w">
+		
+			<div class="actname p-title">{{activity.activity_name}}</div>
+			<div class="header-img"></div>
+		
+		</div>
+		<div class="p-max-w">
+		
+			<div class="content">
+				<div class="sbox">
+					<input type="text" id="myInput" placeholder="City/Location" title="Location">
+				</div>
+				<div class="ct-able">
+					<table class="aTable">
+						<thead class="aThead">
+							<tr>
+								<th>Place</th>
+								<th>Price</th>
+								<th></th>
+							</tr>
+						</thead>
+						<tbody id="myTable" class="aTbody">
+						
+						{% for q in avail %}
+							<tr>
+								<td>
+									<div class="">
+										<span>
+											{{q.city}}
+										</span>
+										<span> - </span>
+										<span>
+											{{q.location}}
+										</span>
+									</div>
+									</td>
+								<td>
+									<div class="">
+										<span>
+											<i class="fas fa-rupee-sign"></i>
+										</span>
+										<span>
+											{{q.prize}}
+										</span>
+									</div>
+								</td>
+								<td>
+									<div class="btn-book">
+										<a href="{% url 'activity_profile_content' name=activity.slug loc=q.slug %}" class="_dflnk">
+											<span>Book Now<span>
+											<span class="gorow"></span>
+										</a>
+									</div>
+								</td>
+							</tr>
+						{% endfor %}
+						{% if avail.count < 1 %}
+							<tr>
+								<td colspan="2">
+									<div class="nomsg"><b>Snap!</b> Not open right now. Please check again later.</div>
+								</td>
+							</tr>
+						{% endif %}
+						
+						</tbody>
+					</table>
+					<div id="Noav" style="display:none"><span>Nothing found for</span> <span id="ffr"></span></div>
+				</div>
+			</div>
+			
+			<div class="">
+						<div class="advs ">
+							<div class="advslabl">Quick links</div>
+							<div class="plist qlinks">
+								{% for q in qlinks %}
+									{% include 'includes/qlinks.html' %}
+								{% endfor %}
+							</div>
+						</div>
+					</div>
+			
+		
+		</div>
+		
+		
+
+	<script>
+	$(document).ready(function(){
+	  $("#myInput").on("keyup", function() {
+		var value = $(this).val().toLowerCase();
+		$("#myTable tr").filter(function() {
+		  $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+		});
+		if($("#myTable tr").children(':visible').length == 0) {
+		   $("#ffr").html($("#myInput").val());
+		   $("#Noav").show();
+		}
+		else{
+		   $("#ffr").html("");
+		   $("#Noav").hide();
+		}
+	  });
+	});
+	</script>	
+	
+	</div>
+	
+	
+	
+{% endblock %}
+	

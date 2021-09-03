@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+	<div class="bk-block" style="min-height:600px;">
+		{% if data.status == "success" %}
+			{% include 'payment/success.html' %}
+		{% elif data.status == "failure" %}
+			{% include 'payment/failed.html' %}
+		{% else %}
+			{% include 'payment/failed.html' %}
+		{% endif %}
+	
+	</div>
+{% endblock %}
+	

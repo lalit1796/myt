@@ -1,0 +1,38 @@
+{% load static %}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+<title>{{ pagetitle }}</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'>
+<link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP&display=swap" rel="stylesheet">
+<link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css' integrity='sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ' crossorigin='anonymous'>
+<script src='{% static "js/plug.js" %}'></script>
+<link rel="stylesheet" href="{% static 'cs/jcs.css' %}" type="text/css"/>
+<style>.logger{display:none}</style>
+</head>
+<body class="defaulthome">
+<div class='jbd bdy'>
+
+	
+{%  include 'navbar.html'%}
+
+{% include 'includes/logform.html' %}
+
+
+
+<div style="display:none" class="spinner"></div>
+<style>
+
+
+</style>
+
+<div class="scri">
+	<script src="{% static 'js/jsript.js' %}"></script>
+</div>
+{%  include 'includes/footer.html'%}
+
+</div>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<div class="pin_thm_nofold pins_asset_container">
+				
+					<div class="tabcontent">
+						<div class="tabcell prodprof">
+							<a href="{% url 'package_profile' slug=e.url_title %}" class="prodthumb nord">
+								<img src="{{ e.featured_img_1.url }}" class="w100 h100"/>
+							</a>
+							
+						</div>
+						<div class="tabcell">
+							<div class="pin_nofold_title textpara">
+								<a href="{% url 'package_profile' slug=e.url_title %}" class="nord pa_title">{{ e.package_title|title }}</a>
+							</div>
+							<div class="pin_nofold_about textpara pa_intro">
+								{{ e.intro|truncatechars:350 }}
+							</div>
+							<div class="clear">
+								{% if e.make_exclusive %}
+									<div class="upcaretlabel-- toke" style="background: #03A9F4;">Exclusive</div>
+								{% endif %}
+								{% if e.make_indemand %}
+									<div class="upcaretlabel-- toke" style="background: #faa70e; border-color: #03A9F4;">In Demand</div>
+								{% endif %}
+								{% if e.make_limitedoffer %}
+									<div class="upcaretlabel-- toke" style="background: #a31b8a; border-color: #03A9F4;">Limited Offer</div>
+								{% endif %}
+								{% if e.make_inbudget %}
+									<div class="upcaretlabel-- toke" style="background: #FF5722; border-color: #03A9F4;">In Budget</div>
+								{% endif %}
+							</div>
+						</div>
+						<div class="tabcell prodpric">
+						<div class="a12 atab">
+							<div class="aat aa1">
+							<span><i class="fas fa-rupee-sign"></i> <span class="pa_cst">{{ e.printcost }}</span></span>
+							</div>
+							<div class="aat aa2">
+								<div>
+									<span class="aa12 ">per person</span>
+								</div>
+								
+								{% if e.discount_pax2 != 0 %}
+								<div>
+									<span class="aa12">
+									<span class="genamt"><i class="fas fa-rupee-sign"></i><span class="pa_gp">{{ e.generalprize_per_adult }}</span></span>
+									
+									<span class="dik">{{ e.discount_pax2 }}% off</span>
+									</span>
+								</div>
+								{% endif %}
+							</div>
+						</div>
+						<div class="b12 atab">
+							<a href="{% url 'package_profile' slug=e.url_title %}" class="btnoffn bookbtn" title="Book Online">Book Online</a>
+						</div>
+						<div class="atab">	
+						<a href="{% url 'package_profile' slug=e.url_title %}" data-p="Package" data-id="{{e.id}}" class="btnoffn qrybtn" rel="nofollow" title="Enquire Now">Send Query</a>
+						</div>
+						</div>
+					</div>
+				
+				</div>
+				
+				
+				
+				
+				
+				
+				
+				

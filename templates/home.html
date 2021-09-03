@@ -1,0 +1,142 @@
+{% extends 'base.html' %}
+
+{% block content %}
+ 
+
+
+<style>
+
+
+</style>
+
+
+
+
+	<!-- home panel -->
+	<div class="mastersearch">
+	
+	<div class="sbdy">
+	
+		<div class='vbdy'>
+		
+		<div class="logoplacer">
+			<div class="logop">WHAT ARE YOU LOOKING FOR?</div>
+		</div>
+		
+		<form class="superform cdformate" action="search" method="GET">
+			
+			<div class="sst">
+			
+							<div class="interIP"><input name="k" type="text" class="textip" placeholder="Search your trip..." required /></div>
+						
+							<div class="interBTN">
+								<div class="holderbtn">
+									<button type="submit" class="textsub"><i class="fas fa-search"></i></button>
+								</div>	
+							</div>
+			
+			</div>
+			
+		</form>	
+		
+		<div class="thumbpinsec">
+			<div class="advs ">
+				<div class="advslabl">Quick links</div>
+				<div class="plist qlinks">
+					{% for q in qlinks %}
+						{% include 'includes/qlinks.html' %}
+					{% endfor %}
+				</div>
+			</div>
+		</div>
+		
+		
+		<div class="thumbpinsec" style="display:none">
+			<div id="slider" class="slider demo">
+				
+				<a href="#" class="control_next">>></a>
+				  <a href="#" class="control_prev"><</a>
+				  <ul>
+				{% for f in flyers %}
+				<li class="flyer-item">
+					<div class="discusFlyer">
+						<img src="{{ f.flyer.url }}" class="w100 h100"/>
+					</div>
+				</li>
+				{% endfor %}
+				</ul>
+				
+
+			<div class="slider_option">
+			  <input type="checkbox" id="checkbox" checked>
+			  
+			</div> 
+			</div>
+		</div>
+		<script>
+			
+		</script>
+		
+
+		
+		<div class="section secpanner content_explore custProf">
+			<div class="thumbpinsec">
+				<div class="advslabl">
+					<span>Thrilling Activities</span> 
+					<a class="gothrulink" href="{% url 'activity_all' %}">
+						<span>See All</span>
+						<span class="gorow"></span>
+					</a>
+				</div>
+				<div class="thumbcol">
+					<div class="thumb-tec">
+						<div class="thumblist">
+							
+							{% for e in activities %}
+								{%  include 'includes/act.html'%}
+							{% endfor %}
+						</div>
+					</div>
+				</div>	
+			</div>
+		</div>
+		
+		
+		
+		
+		
+		<div class="thumbpinsec pins">
+			<div class="pinblock">
+				<div class="advslabl">
+					<span>Trending Tours</span>
+					<a class="gothrulink" href="{% url 'package_all' %}">
+						<span>See All</span>
+						<span class="gorow"></span>
+					</a>
+				</div>
+				{% for e in prod %}
+					{%  include 'includes/pin.html'%}
+				{% endfor %}
+				
+				
+				
+				
+			
+			</div>
+		</div>
+		
+		
+		</div>
+	
+	</div>
+	
+	</div>
+	<!-- home panel -->
+	
+	
+	
+	
+
+
+
+{% endblock %}
